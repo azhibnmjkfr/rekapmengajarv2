@@ -106,7 +106,6 @@ body {
 .header .nama-guru { font-family: 'Geist Mono', monospace; font-size: 10.5px; color: var(--ink-3); display: flex; align-items: center; gap: 6px; margin-top: 6px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; }
 .header .nama-guru i { width: 11px; height: 11px; color: var(--brass); }
 
-/* Header ENGLISH label — desktop default: inline */
 .header-title-row {
     display: flex;
     align-items: center;
@@ -125,13 +124,8 @@ body {
 .profile-avatar:hover { border-color: var(--maroon); transform: scale(1.05); }
 .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Mobile greeting (hidden desktop) */
 .mobile-greeting { display: none; }
-
-/* Mobile quick access (hidden desktop) */
 .mobile-quick-access { display: none; }
-
-/* Mobile nav (hidden desktop) */
 .mobile-nav { display: none; }
 
 /* ============ STATS ============ */
@@ -428,7 +422,7 @@ tbody tr td:nth-child(4) {
 .row-clickable .arrow-cell i,
 .row-clickable .arrow-cell svg { width: 16px; height: 16px; }
 
-/* ============ MODAL (default center) ============ */
+/* ============ MODAL ============ */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -761,12 +755,10 @@ tbody tr td:nth-child(4) {
         overflow: visible;
     }
 
-    /* Header */
     .header {
         padding: 14px 0 12px;
         margin-bottom: 0;
         border-bottom: 1px solid var(--rule);
-        flex-shrink: 0;
     }
     .header::after { display: none; }
     .header h1 { font-size: 12px; letter-spacing: 0.14em; }
@@ -775,22 +767,11 @@ tbody tr td:nth-child(4) {
     .profile-avatar { width: 34px; height: 34px; }
 
     .header-title-row { gap: 8px; }
-    .header-english {
-        font-size: 10px;
-        letter-spacing: 0.18em;
-    }
+    .header-english { font-size: 10px; letter-spacing: 0.18em; }
 
-    #dashboard {
-        display: block;
-        overflow: visible;
-        padding-top: 8px;
-    }
+    #dashboard { display: block; overflow: visible; padding-top: 8px; }
 
-    /* Sapaan mobile */
-    .mobile-greeting {
-        display: block;
-        padding: 20px 0 24px;
-    }
+    .mobile-greeting { display: block; padding: 20px 0 24px; }
     .mobile-greeting-line-1 {
         font-family: 'Geist Mono', monospace;
         font-size: 10px;
@@ -809,7 +790,6 @@ tbody tr td:nth-child(4) {
     }
     .mobile-greeting-line-2 strong { color: var(--maroon); font-weight: 600; }
 
-    /* Stats mobile */
     .stats-grid {
         grid-template-columns: 1fr;
         border-top: 2px solid var(--ink);
@@ -844,7 +824,6 @@ tbody tr td:nth-child(4) {
     .stat-card.green .stat-number,
     .stat-card.red .stat-number { font-size: 22px; }
 
-    /* Akses cepat mobile */
     .mobile-quick-access {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -892,19 +871,14 @@ tbody tr td:nth-child(4) {
         letter-spacing: 0.06em;
     }
 
-    /* Hide desktop tab */
     .nav-tabs { display: none; }
-
-    /* Tampilkan content — di HP konten selalu terlihat */
     #contentArea { display: block; }
 
-    /* State: home vs tab */
     body[data-view="home"] #contentArea { display: none; }
     body[data-view="tab"] .mobile-greeting,
     body[data-view="tab"] .stats-grid,
     body[data-view="tab"] .mobile-quick-access { display: none; }
 
-    /* Filter mobile */
     .filter-section {
         gap: 12px;
         margin-bottom: 20px;
@@ -921,7 +895,10 @@ tbody tr td:nth-child(4) {
     .btn-reset { font-size: 12px; }
 
     /* ============================================================
-       TABLE MOBILE — 2 baris per entri, layout FIX
+       TABLE MOBILE — LAYOUT BARU
+       Kiri: tanggal (atas) + hari (bawah)
+       Tengah: grade
+       Kanan: jam + arrow
        ============================================================ */
     thead { display: none; }
 
@@ -929,13 +906,12 @@ tbody tr td:nth-child(4) {
 
     tbody tr {
         display: grid;
-        grid-template-columns: 1fr 24px;
+        grid-template-columns: 1fr auto auto;
         grid-template-areas:
-            "date    arrow"
-            "detail  arrow";
+            "tanggal  grade  jam";
         padding: 16px 0;
         border-bottom: 1px solid var(--rule);
-        gap: 4px 12px;
+        gap: 4px 16px;
         align-items: center;
     }
     tbody tr:last-child { border-bottom: none; }
@@ -944,63 +920,61 @@ tbody tr td:nth-child(4) {
         padding: 0;
         border: none;
         font-size: 13px;
-        min-width: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
 
-    /* Kolom 1: Tanggal */
+    /* KOLOM 1: Tanggal + Hari — ditumpuk vertikal */
     tbody tr td:nth-child(1) {
-        grid-area: date;
+        grid-area: tanggal;
         font-family: 'Geist Mono', monospace;
         font-weight: 600;
         font-size: 13.5px;
         color: var(--ink);
         letter-spacing: -0.01em;
+        line-height: 1.4;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
     }
-
-    /* Kolom 2: Hari — uppercase kecil */
-    tbody tr td:nth-child(2) {
-        grid-area: detail;
-        display: inline;
-        font-size: 10px;
+    tbody tr td:nth-child(1)::after {
+        content: attr(data-hari);
+        font-family: 'Geist Mono', monospace;
+        font-size: 9.5px;
         font-weight: 600;
-        letter-spacing: 0.14em;
+        letter-spacing: 0.16em;
         text-transform: uppercase;
         color: var(--ink-3);
     }
-    tbody tr td:nth-child(2)::after {
-        content: ' · ';
-        color: var(--ink-4);
-        margin: 0 2px;
-        letter-spacing: 0;
+
+    /* Sembunyikan kolom hari asli (di-move ke ::after tanggal) */
+    tbody tr td:nth-child(2) {
+        display: none;
     }
 
-    /* Kolom 3: Kelas */
+    /* KOLOM 3: Grade — tengah */
     tbody tr td:nth-child(3) {
-        grid-area: detail;
-        display: inline;
-        font-size: 11px;
+        grid-area: grade;
+        text-align: center;
+        justify-self: center;
     }
 
-    /* Kolom 4: Jam */
+    /* KOLOM 4: Jam + Arrow — kanan */
     tbody tr td:nth-child(4) {
-        grid-area: detail;
-        display: inline;
+        grid-area: jam;
         font-family: 'Geist Mono', monospace;
-        font-size: 11px;
+        font-size: 11.5px;
         color: var(--ink-2);
-        letter-spacing: 0;
-        margin-left: 6px;
+        text-align: right;
+        white-space: nowrap;
     }
 
-    /* Kolom 5: Arrow */
+    /* KOLOM 5: Arrow — overlap dengan jam (kanan) */
     tbody tr td:nth-child(5),
     tbody tr td.arrow-cell {
-        grid-area: arrow;
+        grid-area: jam;
+        justify-self: end;
         text-align: right;
         color: var(--ink-4);
-        align-self: center;
+        margin-left: 40px;
     }
 
     .tag {
@@ -1010,7 +984,7 @@ tbody tr td:nth-child(4) {
     }
 
     /* ============================================================
-       MODAL MOBILE — CENTER SCREEN
+       MODAL MOBILE — CENTER
        ============================================================ */
     .modal-overlay {
         align-items: center;
@@ -1025,15 +999,12 @@ tbody tr td:nth-child(4) {
         transform: scale(0.95);
         max-height: 85vh;
     }
-    .modal-overlay.open .modal-box {
-        transform: scale(1);
-    }
+    .modal-overlay.open .modal-box { transform: scale(1); }
     .modal-title { font-size: 16px; margin-bottom: 20px; }
     .modal-item { padding: 12px 0; }
     .modal-item .modal-label { font-size: 9.5px; }
     .modal-item .modal-value { font-size: 14px; }
 
-    /* Profile modal center juga */
     .profile-modal-overlay {
         align-items: center;
         justify-content: center;
@@ -1046,27 +1017,18 @@ tbody tr td:nth-child(4) {
         transform: scale(0.95);
         max-height: 85vh;
     }
-    .profile-modal-overlay.open .profile-modal-box {
-        transform: scale(1);
-    }
+    .profile-modal-overlay.open .profile-modal-box { transform: scale(1); }
 
-    /* Rekap mobile */
     .card-grid-salary { grid-template-columns: 1fr; }
     .salary-entry-card { padding: 28px 0; border-right: none; border-bottom: 1px solid var(--rule); }
     .salary-entry-card:last-child { border-bottom: none; }
     .salary-entry-card::before { top: 28px; right: 0; }
     .salary-entry-title { font-size: 20px; }
 
-    /* Footer */
-    .footer-credit {
-        margin-top: 48px;
-        padding-top: 24px;
-        font-size: 9px;
-        letter-spacing: 0.22em;
-    }
+    .footer-credit { margin-top: 48px; padding-top: 24px; font-size: 9px; letter-spacing: 0.22em; }
 
     /* ============================================================
-       BOTTOM NAV — 5 item
+       BOTTOM NAV
        ============================================================ */
     .mobile-nav {
         display: flex;
@@ -1120,7 +1082,6 @@ tbody tr td:nth-child(4) {
         background: var(--maroon);
     }
 
-    /* GO TOP */
     .go-top {
         bottom: calc(80px + env(safe-area-inset-bottom));
         right: 16px;
@@ -1142,12 +1103,11 @@ tbody tr td:nth-child(4) {
     .mobile-nav-btn svg { width: 16px; height: 16px; }
     .mobile-qa-title { font-size: 14px; }
 
-    /* Tabel lebih compact */
-    tbody tr { padding: 14px 0; }
+    tbody tr { padding: 14px 0; gap: 4px 12px; }
     tbody tr td:nth-child(1) { font-size: 13px; }
-    tbody tr td:nth-child(2) { font-size: 9.5px; }
-    tbody tr td:nth-child(3),
-    tbody tr td:nth-child(4) { font-size: 10px; }
+    tbody tr td:nth-child(4) { font-size: 11px; }
+    tbody tr td:nth-child(5),
+    tbody tr td.arrow-cell { margin-left: 24px; }
 }
 
 @media (min-width: 1024px) {
