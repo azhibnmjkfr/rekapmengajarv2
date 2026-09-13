@@ -1,39 +1,43 @@
 /* ============================================================
    salary.css — Halaman Salary (Pending & Success)
-   Atelier · Warm Paper · Print-ready
+   Atelier · Warm Paper · Editorial · Print-ready
    ============================================================ */
 
 @import url('../fonts.css');
 
 :root {
-    --paper:        #FAF7F0;
-    --paper-2:      #F2EDE2;
-    --paper-3:      #EAE3D4;
-    --ink:          #1F1B16;
-    --ink-2:        #5A544B;
-    --ink-3:        #8B857A;
-    --ink-4:        #B5AEA0;
+    --paper:        #FBF8F1;
+    --paper-2:      #F4EFE3;
+    --paper-3:      #EDE6D6;
+    --ink:          #14110D;
+    --ink-2:        #4A443B;
+    --ink-3:        #7A7266;
+    --ink-4:        #A8A092;
 
-    --rule:         #E0D9C9;
-    --rule-strong:  #C9BFA8;
+    --rule:         #D6CDB8;
+    --rule-strong:  #B8AC92;
 
-    --maroon:       #7A2E2E;
-    --maroon-soft:  rgba(122, 46, 46, 0.06);
-    --brass:        #B8894A;
-    --brass-soft:   rgba(184, 137, 74, 0.10);
+    --maroon:       #6B2828;
+    --maroon-soft:  rgba(107, 40, 40, 0.07);
+    --brass:        #A87B3E;
+    --brass-soft:   rgba(168, 123, 62, 0.10);
 
-    --success:      #2F6F4E;
-    --pending:      #B7791F;
-    --danger:       #A52A2A;
+    --success:      #256B47;
+    --success-soft: rgba(37, 107, 71, 0.08);
+    --pending:      #9F6918;
+    --pending-soft: rgba(159, 105, 24, 0.08);
+    --danger:       #9C2626;
+    --danger-soft:  rgba(156, 38, 38, 0.08);
 
     --r-sm:         4px;
     --r-md:         6px;
+    --r-lg:         10px;
     --r-pill:       999px;
 
     --ease:         cubic-bezier(0.22, 1, 0.36, 1);
 
-    --shadow-1:     0 1px 2px rgba(31, 27, 22, 0.04);
-    --shadow-2:     0 8px 32px -12px rgba(31, 27, 22, 0.10);
+    --shadow-1:     0 1px 2px rgba(20, 17, 13, 0.05);
+    --shadow-2:     0 8px 32px -12px rgba(20, 17, 13, 0.12);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -53,18 +57,15 @@ body {
     font-variant-numeric: tabular-nums;
     letter-spacing: -0.008em;
     line-height: 1.5;
-    background-image:
-        radial-gradient(circle at 25% 15%, rgba(184, 137, 74, 0.04), transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(122, 46, 46, 0.03), transparent 45%);
-    background-attachment: fixed;
+    overflow-x: hidden;
 }
 
 ::selection { background: var(--maroon); color: var(--paper); }
 
 .container {
-    max-width: 900px;
+    max-width: 960px;
     width: 100%;
-    padding: 0 24px 60px;
+    padding: 0 32px 80px;
 }
 
 /* ------------------------------------------------------------
@@ -72,27 +73,17 @@ body {
    ------------------------------------------------------------ */
 .salary-header {
     padding: 26px 0 22px;
-    border-bottom: 1px solid var(--rule);
-    margin-bottom: 44px;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 48px;
     display: flex;
     align-items: flex-start;
     gap: 16px;
     position: relative;
 }
-.salary-header::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--maroon);
-    transition: width 0.6s var(--ease);
-}
 
 .btn-back {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     border: 1px solid var(--rule-strong);
     background: transparent;
@@ -117,17 +108,17 @@ body {
 
 .salary-header-title {
     font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
+    font-weight: 700;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--ink);
     flex: 1;
-    padding-top: 10px;
+    padding-top: 12px;
 }
 
 .btn-print {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     border: 1px solid var(--rule-strong);
     background: transparent;
@@ -163,22 +154,22 @@ body {
 }
 
 /* ------------------------------------------------------------
-   HOME — KATEGORI (list baris, bukan card)
+   HOME — KATEGORI
    ------------------------------------------------------------ */
 .card-grid {
     display: block;
-    border-top: 1px solid var(--rule);
+    border-top: 2px solid var(--ink);
 }
 
 .salary-card {
     position: relative;
-    padding: 36px 40px 36px 0;
+    padding: 40px 48px 40px 0;
     cursor: pointer;
     transition: background 0.35s var(--ease);
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: 24px;
+    gap: 28px;
     border-bottom: 1px solid var(--rule);
     -webkit-tap-highlight-color: transparent;
     background: transparent;
@@ -190,7 +181,7 @@ body {
     color: var(--ink-4);
     letter-spacing: 0.08em;
     transition: color 0.3s;
-    width: 30px;
+    width: 32px;
     flex-shrink: 0;
 }
 .salary-card:last-child::before { content: '02'; }
@@ -198,7 +189,7 @@ body {
 .salary-card::after {
     content: '→';
     font-family: 'Geist Mono', monospace;
-    font-size: 18px;
+    font-size: 20px;
     color: var(--ink-4);
     transition: transform 0.35s var(--ease), color 0.3s;
     flex-shrink: 0;
@@ -213,7 +204,7 @@ body {
 .salary-card:active { background: var(--paper-2); }
 
 .salary-card-title {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 600;
     color: var(--ink);
     letter-spacing: -0.03em;
@@ -241,13 +232,13 @@ body {
     justify-content: space-between;
     gap: 16px;
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     padding-bottom: 20px;
-    border-bottom: 1px solid var(--rule);
+    border-bottom: 2px solid var(--ink);
 }
 
 .table-header-title {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 600;
     color: var(--ink);
     display: flex;
@@ -278,7 +269,7 @@ body {
     color: var(--ink);
     border: none;
     font-family: 'Geist Mono', monospace;
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 600;
     letter-spacing: -0.03em;
     box-shadow: none;
@@ -298,7 +289,7 @@ body {
 .table-wrap {
     border: none;
     background: transparent;
-    border-top: 1px solid var(--rule);
+    border-top: none;
     overflow: visible;
     box-shadow: none;
 }
@@ -315,12 +306,9 @@ table {
     font-size: 14px;
     min-width: 100%;
 }
-thead {
-    background: transparent;
-    border-bottom: none;
-}
+thead { background: transparent; border-bottom: none; }
 th {
-    padding: 18px 12px 10px;
+    padding: 18px 12px 12px;
     text-align: left;
     font-family: 'Geist Mono', monospace;
     font-weight: 600;
@@ -329,10 +317,10 @@ th {
     letter-spacing: 0.2em;
     color: var(--ink-3);
     white-space: nowrap;
-    border-bottom: 1px solid var(--rule);
+    border-bottom: 2px solid var(--ink);
 }
 td {
-    padding: 20px 12px;
+    padding: 22px 12px;
     border-bottom: 1px solid var(--rule);
     vertical-align: middle;
     color: var(--ink);
@@ -372,7 +360,7 @@ tbody tr td:nth-child(2) {
 .tag-grade {
     background: var(--brass-soft);
     color: var(--brass);
-    border-color: rgba(184, 137, 74, 0.35);
+    border-color: rgba(168, 123, 62, 0.40);
 }
 
 /* ------------------------------------------------------------
@@ -425,14 +413,14 @@ tbody tr td:nth-child(2) {
     font-family: 'Geist Mono', monospace;
 }
 .stat-badge.success {
-    background: transparent;
+    background: var(--success-soft);
     color: var(--success);
-    border: 1px solid rgba(47, 111, 78, 0.35);
+    border: 1px solid rgba(37, 107, 71, 0.35);
 }
 .stat-badge.pending {
-    background: transparent;
+    background: var(--pending-soft);
     color: var(--pending);
-    border: 1px solid rgba(183, 121, 31, 0.35);
+    border: 1px solid rgba(159, 105, 24, 0.35);
 }
 .stat-badge.neutral {
     background: transparent;
@@ -446,7 +434,7 @@ tbody tr td:nth-child(2) {
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(31, 27, 22, 0.5);
+    background: rgba(20, 17, 13, 0.5);
     backdrop-filter: blur(8px) saturate(120%);
     -webkit-backdrop-filter: blur(8px) saturate(120%);
     z-index: 2000;
@@ -595,8 +583,8 @@ tbody tr td:nth-child(2) {
    ------------------------------------------------------------ */
 .footer-credit {
     text-align: center;
-    margin-top: 72px;
-    padding-top: 28px;
+    margin-top: 80px;
+    padding-top: 32px;
     border-top: 1px solid var(--rule);
     font-family: 'Geist Mono', monospace;
     font-size: 10px;
@@ -619,7 +607,6 @@ tbody tr td:nth-child(2) {
         display: block;
         color: #000;
         font-family: 'Geist', sans-serif;
-        background-image: none !important;
     }
     .salary-header,
     .container > #viewHome,
@@ -709,68 +696,140 @@ tbody tr td:nth-child(2) {
 }
 
 /* ------------------------------------------------------------
-   RESPONSIVE
+   MOBILE
    ------------------------------------------------------------ */
 @media (max-width: 640px) {
-    .container { padding: 0 18px 40px; }
-    .salary-header { padding: 22px 0 18px; margin-bottom: 32px; }
-    .salary-header-title { font-size: 11px; letter-spacing: 0.16em; }
-    .btn-back, .btn-print { width: 34px; height: 34px; }
-    .btn-back svg, .btn-print svg { width: 14px; height: 14px; }
+    .container {
+        padding: 0 20px 48px;
+    }
 
-    .salary-card { padding: 28px 24px 28px 0; gap: 16px; }
-    .salary-card-title { font-size: 20px; }
+    .salary-header {
+        padding: 20px 0 18px;
+        margin-bottom: 32px;
+        border-bottom: 2px solid var(--ink);
+    }
+    .salary-header-title { font-size: 11.5px; letter-spacing: 0.18em; padding-top: 12px; }
+    .btn-back, .btn-print { width: 36px; height: 36px; margin-top: 2px; }
+    .btn-back svg, .btn-print svg { width: 15px; height: 15px; }
+
+    .salary-card {
+        padding: 32px 32px 32px 0;
+        gap: 20px;
+    }
+    .salary-card::before { width: 26px; font-size: 10px; }
+    .salary-card-title { font-size: 22px; }
     .salary-card-desc { font-size: 10.5px; }
-    .salary-card::before { width: 24px; font-size: 10px; }
-    .salary-card::after { font-size: 16px; }
 
-    .table-header-title { font-size: 18px; }
-    .total-badge { font-size: 18px; }
+    .table-header-bar {
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+    }
+    .table-header-title { font-size: 20px; }
+    .total-badge { font-size: 20px; }
     .total-badge::before { font-size: 9px; }
 
+    /* Tabel jadi 2 baris per entri */
+    thead { display: none; }
     table { font-size: 13px; }
-    th { padding: 14px 8px 8px; font-size: 9px; }
-    td { padding: 16px 8px; }
+    tbody tr {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "date   arrow"
+            "detail arrow";
+        padding: 18px 0;
+        border-bottom: 1px solid var(--rule);
+        gap: 6px 12px;
+        align-items: center;
+    }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr td { padding: 0; border: none; }
 
-    .modal-box { padding: 28px 22px 22px; margin: 8px; }
+    tbody tr td:first-child {
+        grid-area: date;
+        font-size: 13px;
+    }
+    tbody tr td:nth-child(2),
+    tbody tr td:nth-child(3),
+    tbody tr td:nth-child(4) {
+        grid-area: detail;
+        display: inline;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        color: var(--ink-3);
+    }
+    tbody tr td:nth-child(4) { letter-spacing: 0.04em; color: var(--ink-2); }
+    tbody tr td:nth-child(3) { margin-left: 8px; }
+    tbody tr td:nth-child(4) { margin-left: 8px; }
+
+    tbody tr td:nth-child(2)::after,
+    tbody tr td:nth-child(3)::after {
+        content: ' · ';
+        color: var(--ink-4);
+        margin: 0 2px;
+    }
+
+    tbody tr td.arrow-cell,
+    tbody tr td:last-child {
+        grid-area: arrow;
+        text-align: right;
+        color: var(--ink-4);
+    }
+
+    .tag { font-size: 10.5px; padding: 2px 8px; }
+
+    /* Modal → bottom sheet */
+    .modal-overlay { align-items: flex-end; padding: 0; }
+    .modal-box {
+        max-width: 100%;
+        width: 100%;
+        border-radius: 16px 16px 0 0;
+        padding: 28px 24px calc(32px + env(safe-area-inset-bottom));
+        transform: translateY(100%);
+        max-height: 88vh;
+    }
+    .modal-overlay.open .modal-box { transform: translateY(0); }
+    .modal-title { font-size: 16px; }
     .modal-item .modal-label { font-size: 9.5px; }
-    .modal-item .modal-value { font-size: 13.5px; }
+    .modal-item .modal-value { font-size: 14px; }
 
-    .error-card { padding: 36px 22px 28px; }
+    .footer-credit { margin-top: 60px; font-size: 9.5px; }
 }
 
 @media (max-width: 420px) {
-    .container { padding: 0 16px 32px; }
-    .salary-header-title { font-size: 10px; letter-spacing: 0.14em; }
-    .salary-card { padding: 22px 18px 22px 0; }
-    .salary-card-title { font-size: 17px; }
+    .container { padding: 0 16px 40px; }
+    .salary-header-title { font-size: 10.5px; letter-spacing: 0.16em; }
+    .salary-card { padding: 24px 26px 24px 0; gap: 16px; }
+    .salary-card-title { font-size: 20px; }
     .salary-card-desc { display: none; }
 
-    table { font-size: 12px; }
-    th, td { padding: 12px 6px; }
+    .table-header-title { font-size: 18px; }
+    .total-badge { font-size: 18px; }
 
-    .modal-box { padding: 24px 18px 20px; }
-    .modal-item .modal-label { font-size: 9px; }
-    .modal-item .modal-value { font-size: 12.5px; }
-    .modal-title { font-size: 15px; }
+    tbody tr td:first-child { font-size: 12px; }
+    tbody tr td:nth-child(2),
+    tbody tr td:nth-child(3),
+    tbody tr td:nth-child(4) { font-size: 10.5px; }
+
+    .modal-box { padding: 24px 18px calc(28px + env(safe-area-inset-bottom)); }
 }
 
 @media (min-width: 1024px) {
-    .container { max-width: 920px; padding: 0 32px 80px; }
+    .container { max-width: 1000px; padding: 0 40px 100px; }
     .salary-header { padding: 32px 0 26px; margin-bottom: 56px; }
-    .salary-header-title { font-size: 14px; letter-spacing: 0.2em; }
-    .btn-back, .btn-print { width: 40px; height: 40px; }
+    .salary-header-title { font-size: 14px; letter-spacing: 0.22em; }
+    .btn-back, .btn-print { width: 42px; height: 42px; }
 
-    .salary-card { padding: 44px 48px 44px 0; }
-    .salary-card-title { font-size: 30px; }
+    .salary-card { padding: 52px 56px 52px 0; }
+    .salary-card-title { font-size: 32px; }
     .salary-card-desc { font-size: 12.5px; }
 
-    .table-header-title { font-size: 26px; }
-    .total-badge { font-size: 28px; }
+    .table-header-title { font-size: 28px; }
+    .total-badge { font-size: 30px; }
 
     table { font-size: 14.5px; }
-    th { padding: 20px 14px 12px; }
-    td { padding: 22px 14px; }
+    th { padding: 20px 14px 14px; }
+    td { padding: 24px 14px; }
 
     .modal-box { padding: 40px 36px 32px; max-width: 480px; }
 }
