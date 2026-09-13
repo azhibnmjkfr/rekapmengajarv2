@@ -1,6 +1,6 @@
 /* ============================================================
    style.css — Rekap Mengajar SIAQ
-   Atelier · Warm Paper · Elegant · Functional
+   Atelier · Warm Paper · Editorial · Mobile Hero
    ============================================================ */
 
 @import url('fonts.css');
@@ -10,41 +10,45 @@
    ------------------------------------------------------------ */
 :root {
     /* Paper & Ink */
-    --paper:        #FAF7F0;
-    --paper-2:      #F2EDE2;
-    --paper-3:      #EAE3D4;
-    --ink:          #1F1B16;
-    --ink-2:        #5A544B;
-    --ink-3:        #8B857A;
-    --ink-4:        #B5AEA0;
+    --paper:        #FBF8F1;
+    --paper-2:      #F4EFE3;
+    --paper-3:      #EDE6D6;
+    --ink:          #14110D;
+    --ink-2:        #4A443B;
+    --ink-3:        #7A7266;
+    --ink-4:        #A8A092;
 
-    /* Rules (garis) */
-    --rule:         #E0D9C9;
-    --rule-strong:  #C9BFA8;
+    /* Rules — lebih jelas */
+    --rule:         #D6CDB8;
+    --rule-strong:  #B8AC92;
 
     /* Accents */
-    --maroon:       #7A2E2E;
-    --maroon-soft:  rgba(122, 46, 46, 0.06);
-    --brass:        #B8894A;
-    --brass-soft:   rgba(184, 137, 74, 0.10);
+    --maroon:       #6B2828;
+    --maroon-soft:  rgba(107, 40, 40, 0.07);
+    --brass:        #A87B3E;
+    --brass-soft:   rgba(168, 123, 62, 0.10);
 
     /* Status */
-    --success:      #2F6F4E;
-    --pending:      #B7791F;
-    --danger:       #A52A2A;
+    --success:      #256B47;
+    --success-soft: rgba(37, 107, 71, 0.08);
+    --pending:      #9F6918;
+    --pending-soft: rgba(159, 105, 24, 0.08);
+    --danger:       #9C2626;
+    --danger-soft:  rgba(156, 38, 38, 0.08);
 
-    /* Radii — lebih kecil, lebih "paper" */
+    /* Radii */
     --r-sm:         4px;
     --r-md:         6px;
+    --r-lg:         10px;
     --r-pill:       999px;
 
     /* Motion */
     --ease:         cubic-bezier(0.22, 1, 0.36, 1);
-    --ease-in:      cubic-bezier(0.4, 0, 1, 1);
+    --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
 
-    /* Shadow — sangat halus */
-    --shadow-1:     0 1px 2px rgba(31, 27, 22, 0.04);
-    --shadow-2:     0 8px 32px -12px rgba(31, 27, 22, 0.10);
+    /* Shadows */
+    --shadow-1:     0 1px 2px rgba(20, 17, 13, 0.05);
+    --shadow-2:     0 8px 32px -12px rgba(20, 17, 13, 0.12);
 }
 
 /* ------------------------------------------------------------
@@ -70,20 +74,15 @@ body {
     font-variant-numeric: tabular-nums;
     letter-spacing: -0.008em;
     line-height: 1.5;
-
-    /* Paper grain — sangat halus */
-    background-image:
-        radial-gradient(circle at 25% 15%, rgba(184, 137, 74, 0.04), transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(122, 46, 46, 0.03), transparent 45%);
-    background-attachment: fixed;
+    overflow-x: hidden;
 }
 
 ::selection { background: var(--maroon); color: var(--paper); }
 
 .container {
-    max-width: 900px;
+    max-width: 960px;
     width: 100%;
-    padding: 0 24px 60px;
+    padding: 0 32px 80px;
 }
 
 /* ------------------------------------------------------------
@@ -98,7 +97,7 @@ body {
     text-align: center;
     z-index: 1000;
     padding: 30px;
-    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
 }
 #loadingScreen.hide {
     opacity: 0;
@@ -121,7 +120,6 @@ body {
 }
 
 .loading-title {
-    font-family: 'Geist', sans-serif;
     font-size: 24px;
     font-weight: 600;
     letter-spacing: -0.03em;
@@ -130,7 +128,6 @@ body {
 }
 .loading-name {
     font-size: 13px;
-    font-weight: 400;
     color: var(--ink-2);
     letter-spacing: 0.02em;
     margin-bottom: 4px;
@@ -147,7 +144,7 @@ body {
 .loading-bar-wrap { width: 100%; }
 .loading-bar {
     width: 100%;
-    height: 1.5px;
+    height: 2px;
     background: var(--rule);
     border-radius: var(--r-pill);
     overflow: hidden;
@@ -179,18 +176,19 @@ body {
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+    width: 100%;
 }
 #dashboard.show { opacity: 1; transform: translateY(0); }
 
 /* ------------------------------------------------------------
-   TOP BAR — minimal
+   TOP BAR
    ------------------------------------------------------------ */
 .header {
     padding: 26px 0 22px;
     border-bottom: 1px solid var(--rule);
-    margin-bottom: 44px;
+    margin-bottom: 48px;
     cursor: pointer;
-    transition: border-color 0.4s var(--ease);
+    transition: border-color 0.4s var(--ease), padding 0.3s var(--ease);
     position: relative;
 }
 .header::after {
@@ -213,7 +211,6 @@ body {
 }
 
 .header h1 {
-    font-family: 'Geist', sans-serif;
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -260,13 +257,12 @@ body {
     color: var(--brass);
 }
 
-/* Avatar — kecil, tidak dominan */
 .profile-avatar {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     overflow: hidden;
-    border: 1px solid var(--rule-strong);
+    border: 1.5px solid var(--rule-strong);
     flex-shrink: 0;
     cursor: pointer;
     transition: border-color 0.3s, transform 0.3s var(--ease);
@@ -279,183 +275,86 @@ body {
 .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
 
 /* ------------------------------------------------------------
-   HERO — sapaan personal (elemen baru!)
+   HERO (mobile only — hidden di desktop)
    ------------------------------------------------------------ */
 .hero {
-    margin-bottom: 52px;
-    animation: heroIn 1s var(--ease) 0.1s both;
+    display: none;
 }
+
+/* ------------------------------------------------------------
+   STATS — Desktop: 4 kolom rapi
+   ------------------------------------------------------------ */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+    padding: 40px 0 44px;
+    margin-bottom: 56px;
+    animation: heroIn 1s var(--ease) 0.15s both;
+}
+
 @keyframes heroIn {
     from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
-.hero-greeting {
-    font-family: 'Geist', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--brass);
-    margin-bottom: 12px;
-}
-
-.hero-name {
-    font-family: 'Geist', sans-serif;
-    font-size: 42px;
-    font-weight: 600;
-    letter-spacing: -0.035em;
-    line-height: 1.05;
-    color: var(--ink);
-    margin-bottom: 16px;
-}
-
-.hero-status {
-    font-size: 15px;
-    color: var(--ink-2);
-    line-height: 1.6;
-    max-width: 520px;
-    font-weight: 400;
-}
-.hero-status strong {
-    color: var(--maroon);
-    font-weight: 600;
-    font-family: 'Geist Mono', monospace;
-}
-
-/* ------------------------------------------------------------
-   STATS — asimetris (1 raksasa + 3 kecil)
-   ------------------------------------------------------------ */
-.stats-grid {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 0;
-    margin-bottom: 56px;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    padding: 36px 0;
-    animation: heroIn 1s var(--ease) 0.2s both;
-}
-
-.stat-card.blue {
-    /* Stat utama (Total Jam) — angka raksasa */
-    padding: 0 40px 0 0;
-    border-right: 1px solid var(--rule);
-    position: relative;
+.stat-card {
+    padding: 0 28px;
     text-align: left;
+    position: relative;
+    border-right: 1px solid var(--rule);
 }
-.stat-card.blue::before {
-    content: '';
-    position: absolute;
-    right: -1px;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: var(--maroon);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 0.7s var(--ease) 0.3s;
-}
-.stats-grid.loaded .stat-card.blue::before {
-    transform: scaleY(1);
-}
+.stat-card:first-child { padding-left: 0; }
+.stat-card:last-child { padding-right: 0; border-right: none; }
 
-.stat-card.blue .stat-icon { display: none; }
+.stat-card .stat-icon { display: none; }
 
-.stat-card.blue .stat-number {
+.stat-card .stat-label {
     font-family: 'Geist Mono', monospace;
-    font-size: 84px;
-    font-weight: 500;
-    letter-spacing: -0.06em;
-    color: var(--ink);
-    line-height: 0.95;
-    margin-bottom: 10px;
-    display: block;
-}
-
-.stat-card.blue .stat-label {
-    font-family: 'Geist', sans-serif;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 600;
     color: var(--maroon);
     text-transform: uppercase;
     letter-spacing: 0.18em;
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 16px;
+    position: relative;
+    padding-bottom: 12px;
 }
-.stat-card.blue .stat-label::after {
-    content: ' — akumulasi mengajar sepanjang tahun ajaran';
-    color: var(--ink-3);
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    text-transform: none;
-    font-size: 12.5px;
-    margin-left: 4px;
-}
-
-/* 3 stat kecil di kanan */
-.stat-card.purple,
-.stat-card.green,
-.stat-card.red {
-    padding: 0 0 0 32px;
-    text-align: left;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: baseline;
-    gap: 12px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    border-bottom: 1px dashed var(--rule);
-}
-.stat-card.purple { padding-top: 0; }
-.stat-card.red {
-    border-bottom: none;
-    padding-bottom: 0;
+.stat-card .stat-label::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 24px;
+    height: 1px;
+    background: var(--maroon);
 }
 
-.stat-card.purple .stat-icon,
-.stat-card.green .stat-icon,
-.stat-card.red .stat-icon { display: none; }
-
-.stat-card.purple .stat-number,
-.stat-card.green .stat-number,
-.stat-card.red .stat-number {
+.stat-card .stat-number {
     font-family: 'Geist Mono', monospace;
-    font-size: 32px;
+    font-size: 56px;
     font-weight: 500;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.05em;
     color: var(--ink);
     line-height: 1;
-    text-align: right;
-    grid-column: 2;
-    grid-row: 1;
+    display: block;
 }
 
-.stat-card.purple .stat-label,
-.stat-card.green .stat-label,
-.stat-card.red .stat-label {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--ink-2);
-    text-transform: none;
-    letter-spacing: 0.02em;
-    grid-column: 1;
-    grid-row: 1;
-}
-
+.stat-card.blue  .stat-number { color: var(--ink); }
+.stat-card.purple .stat-number { color: var(--ink); }
 .stat-card.green .stat-number { color: var(--success); }
 .stat-card.red   .stat-number { color: var(--danger); }
-.stat-card.purple .stat-number { color: var(--ink); }
 
 /* ------------------------------------------------------------
    NAV TABS — underline editorial
    ------------------------------------------------------------ */
 .nav-tabs {
     display: flex;
-    gap: 32px;
-    margin-bottom: 36px;
+    gap: 36px;
+    margin-bottom: 40px;
     border-bottom: 1px solid var(--rule);
-    padding-bottom: 0;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
@@ -465,7 +364,7 @@ body {
 
 .nav-tabs button {
     flex-shrink: 0;
-    padding: 14px 0;
+    padding: 16px 0;
     border: none;
     background: transparent;
     font-family: inherit;
@@ -509,11 +408,13 @@ body {
    FILTER SECTION
    ------------------------------------------------------------ */
 .filter-section {
-    margin-bottom: 24px;
+    margin-bottom: 28px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
 }
 .filter-section label {
     font-family: 'Geist Mono', monospace;
@@ -521,7 +422,7 @@ body {
     font-weight: 600;
     color: var(--ink-3);
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.18em;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -535,18 +436,18 @@ body {
 .filter-select {
     padding: 8px 32px 8px 0;
     border: none;
-    border-bottom: 1px solid var(--rule-strong);
+    border-bottom: 1.5px solid var(--rule-strong);
     background: transparent;
     color: var(--ink);
     font-family: inherit;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    min-width: 160px;
+    min-width: 180px;
     flex: 1;
-    max-width: 260px;
+    max-width: 280px;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%237A2E2E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%236B2828' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 4px center;
     transition: border-color 0.3s var(--ease);
@@ -611,7 +512,7 @@ body {
 }
 
 /* ------------------------------------------------------------
-   TABLE — list editorial
+   TABLE — editorial
    ------------------------------------------------------------ */
 .table-wrap {
     border: none;
@@ -639,14 +540,10 @@ table {
     table-layout: auto;
 }
 
-/* Sembunyikan header "kotak" — ubah jadi label kecil */
-thead {
-    background: transparent;
-    border-bottom: none;
-}
+thead { background: transparent; border-bottom: none; }
 
 th {
-    padding: 18px 12px 10px;
+    padding: 18px 12px 12px;
     text-align: left;
     font-family: 'Geist Mono', monospace;
     font-weight: 600;
@@ -655,11 +552,11 @@ th {
     letter-spacing: 0.2em;
     color: var(--ink-3);
     white-space: nowrap;
-    border-bottom: 1px solid var(--rule);
+    border-bottom: 2px solid var(--ink);
 }
 
 td {
-    padding: 20px 12px;
+    padding: 22px 12px;
     border-bottom: 1px solid var(--rule);
     vertical-align: middle;
     color: var(--ink);
@@ -667,7 +564,6 @@ td {
 }
 tr:last-child td { border-bottom: none; }
 
-/* Kolom tanggal pakai mono, tebal */
 tbody tr td:first-child,
 tbody tr td:first-child strong {
     font-family: 'Geist Mono', monospace;
@@ -676,8 +572,6 @@ tbody tr td:first-child strong {
     font-size: 13.5px;
     color: var(--ink);
 }
-
-/* Kolom hari uppercase kecil */
 tbody tr td:nth-child(2) {
     font-size: 11px;
     font-weight: 600;
@@ -685,18 +579,12 @@ tbody tr td:nth-child(2) {
     text-transform: uppercase;
     color: var(--ink-3);
 }
-
-/* Kolom jam */
 tbody tr td:nth-child(4) {
     font-family: 'Geist Mono', monospace;
     font-size: 13px;
     color: var(--ink-2);
 }
 
-/* Zebra dilepas — ganti dengan hover */
-tbody tr:nth-child(even) { background: transparent; }
-
-/* Tag kelas — jadi badge elegan */
 .tag {
     display: inline-flex;
     align-items: center;
@@ -714,7 +602,7 @@ tbody tr:nth-child(even) { background: transparent; }
 .tag-club {
     background: transparent;
     color: var(--maroon);
-    border-color: rgba(122, 46, 46, 0.3);
+    border-color: rgba(107, 40, 40, 0.35);
 }
 .tag-reguler {
     background: transparent;
@@ -724,10 +612,9 @@ tbody tr:nth-child(even) { background: transparent; }
 .tag-grade {
     background: var(--brass-soft);
     color: var(--brass);
-    border-color: rgba(184, 137, 74, 0.35);
+    border-color: rgba(168, 123, 62, 0.40);
 }
 
-/* Row hover — subtle bar di kiri */
 .row-clickable {
     cursor: pointer;
     transition: background 0.25s var(--ease);
@@ -760,10 +647,7 @@ tbody tr:nth-child(even) { background: transparent; }
     transform: translateX(4px);
 }
 .row-clickable .arrow-cell i,
-.row-clickable .arrow-cell svg {
-    width: 16px;
-    height: 16px;
-}
+.row-clickable .arrow-cell svg { width: 16px; height: 16px; }
 
 /* ------------------------------------------------------------
    MODAL
@@ -771,7 +655,7 @@ tbody tr:nth-child(even) { background: transparent; }
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(31, 27, 22, 0.45);
+    background: rgba(20, 17, 13, 0.5);
     backdrop-filter: blur(8px) saturate(120%);
     -webkit-backdrop-filter: blur(8px) saturate(120%);
     z-index: 2000;
@@ -881,7 +765,7 @@ tbody tr:nth-child(even) { background: transparent; }
 }
 
 /* ------------------------------------------------------------
-   STATUS BADGE (modal rekap)
+   STATUS BADGE
    ------------------------------------------------------------ */
 .status-badge {
     display: inline-flex;
@@ -896,14 +780,14 @@ tbody tr:nth-child(even) { background: transparent; }
     letter-spacing: 0.04em;
 }
 .status-badge.success {
-    background: transparent;
+    background: var(--success-soft);
     color: var(--success);
-    border: 1px solid rgba(47, 111, 78, 0.35);
+    border: 1px solid rgba(37, 107, 71, 0.35);
 }
 .status-badge.pending {
-    background: transparent;
+    background: var(--pending-soft);
     color: var(--pending);
-    border: 1px solid rgba(183, 121, 31, 0.35);
+    border: 1px solid rgba(159, 105, 24, 0.35);
 }
 
 /* ------------------------------------------------------------
@@ -930,11 +814,11 @@ tbody tr:nth-child(even) { background: transparent; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 .error-msg {
-    background: var(--maroon-soft);
-    color: var(--maroon);
+    background: var(--danger-soft);
+    color: var(--danger);
     padding: 18px 20px;
     border-radius: var(--r-md);
-    border: 1px solid rgba(122, 46, 46, 0.2);
+    border: 1px solid rgba(156, 38, 38, 0.25);
     font-size: 13.5px;
     text-align: center;
     line-height: 1.7;
@@ -981,8 +865,8 @@ tbody tr:nth-child(even) { background: transparent; }
    ------------------------------------------------------------ */
 .footer-credit {
     text-align: center;
-    margin-top: 72px;
-    padding-top: 28px;
+    margin-top: 80px;
+    padding-top: 32px;
     border-top: 1px solid var(--rule);
     font-family: 'Geist Mono', monospace;
     font-size: 10px;
@@ -998,7 +882,7 @@ tbody tr:nth-child(even) { background: transparent; }
 .profile-modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(31, 27, 22, 0.5);
+    background: rgba(20, 17, 13, 0.55);
     backdrop-filter: blur(10px) saturate(120%);
     -webkit-backdrop-filter: blur(10px) saturate(120%);
     z-index: 3000;
@@ -1061,7 +945,7 @@ tbody tr:nth-child(even) { background: transparent; }
     border-radius: 50%;
     overflow: hidden;
     margin: 0 auto 20px;
-    border: 1px solid var(--rule-strong);
+    border: 1.5px solid var(--rule-strong);
     padding: 3px;
     background: var(--paper-2);
 }
@@ -1172,7 +1056,7 @@ tbody tr:nth-child(even) { background: transparent; }
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 52px 0 44px;
+    margin: 56px 0 48px;
 }
 .rekap-divider-line {
     display: block;
@@ -1180,9 +1064,9 @@ tbody tr:nth-child(even) { background: transparent; }
     height: 1px;
     background: linear-gradient(90deg,
         transparent 0%,
-        var(--rule) 20%,
-        var(--rule-strong) 50%,
-        var(--rule) 80%,
+        var(--rule-strong) 20%,
+        var(--ink) 50%,
+        var(--rule-strong) 80%,
         transparent 100%);
 }
 
@@ -1190,14 +1074,13 @@ tbody tr:nth-child(even) { background: transparent; }
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
-    border-top: 1px solid var(--rule);
+    border-top: 2px solid var(--ink);
     border-bottom: 1px solid var(--rule);
 }
 
-/* Card jadi list baris — bukan kotak */
 .salary-entry-card {
     position: relative;
-    padding: 32px 28px;
+    padding: 40px 32px;
     text-align: left;
     cursor: pointer;
     transition: background 0.35s var(--ease);
@@ -1215,8 +1098,8 @@ tbody tr:nth-child(even) { background: transparent; }
 .salary-entry-card::before {
     content: '01';
     position: absolute;
-    top: 32px;
-    right: 28px;
+    top: 40px;
+    right: 32px;
     font-family: 'Geist Pixel Square', monospace;
     font-size: 11px;
     color: var(--ink-4);
@@ -1232,7 +1115,7 @@ tbody tr:nth-child(even) { background: transparent; }
 .salary-entry-card:active { background: var(--paper-2); }
 
 .salary-entry-title {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 600;
     color: var(--ink);
     letter-spacing: -0.025em;
@@ -1254,91 +1137,590 @@ tbody tr:nth-child(even) { background: transparent; }
 }
 
 /* ------------------------------------------------------------
-   RESPONSIVE
+   MOBILE NAV (bottom) — hanya mobile
    ------------------------------------------------------------ */
-@media (max-width: 720px) {
+.mobile-nav {
+    display: none;
+}
+
+.mobile-back {
+    display: none;
+}
+
+/* ============================================================
+   MOBILE — ≤ 640px
+   ============================================================ */
+@media (max-width: 640px) {
+
+    /* Body & container */
+    body {
+        overflow-x: hidden;
+    }
+
+    .container {
+        padding: 0 20px calc(90px + env(safe-area-inset-bottom));
+    }
+
+    /* ------------------------------------------------------
+       TOP BAR — fixed, transparan di hero, solid saat scroll
+       ------------------------------------------------------ */
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 500;
+        padding: 16px 20px;
+        margin-bottom: 0;
+        background: transparent;
+        border-bottom: 1px solid transparent;
+        transition: background 0.4s var(--ease),
+                    border-color 0.4s var(--ease),
+                    backdrop-filter 0.4s var(--ease);
+    }
+    .header::after { display: none; }
+
+    .header.scrolled {
+        background: rgba(251, 248, 241, 0.85);
+        backdrop-filter: blur(16px) saturate(140%);
+        -webkit-backdrop-filter: blur(16px) saturate(140%);
+        border-bottom-color: var(--rule);
+    }
+
+    .header h1 { font-size: 12px; letter-spacing: 0.14em; }
+    .header h1 .badge { display: none; }
+    .header .nama-guru { display: none; }
+    .profile-avatar {
+        width: 34px;
+        height: 34px;
+        border-width: 1px;
+    }
+
+    /* ------------------------------------------------------
+       HERO — full screen
+       ------------------------------------------------------ */
+    .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100dvh;
+        padding: 100px 20px 120px;
+        position: relative;
+        margin: 0 -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .hero-greeting {
+        font-family: 'Geist Mono', monospace;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--brass);
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+        opacity: 0;
+        transform: translateY(12px);
+        animation: heroReveal 0.9s var(--ease) 0.2s forwards;
+    }
+
+    .hero-name {
+        font-family: 'Geist Mono', monospace;
+        font-size: 42px;
+        font-weight: 500;
+        color: var(--ink);
+        letter-spacing: -0.045em;
+        line-height: 1.05;
+        margin-bottom: 20px;
+        opacity: 0;
+        transform: translateY(16px);
+        animation: heroReveal 1s var(--ease) 0.35s forwards;
+    }
+
+    .hero-line {
+        width: 44px;
+        height: 2px;
+        background: var(--maroon);
+        margin-bottom: 24px;
+        opacity: 0;
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: lineDraw 0.8s var(--ease) 0.6s forwards;
+    }
+
+    .hero-status {
+        font-size: 15px;
+        color: var(--ink-2);
+        line-height: 1.6;
+        max-width: 320px;
+        font-weight: 400;
+        opacity: 0;
+        transform: translateY(12px);
+        animation: heroReveal 1s var(--ease) 0.75s forwards;
+    }
+
+    .hero-status strong {
+        color: var(--maroon);
+        font-weight: 600;
+        font-family: 'Geist Mono', monospace;
+    }
+
+    @keyframes heroReveal {
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes lineDraw {
+        to { opacity: 1; transform: scaleX(1); }
+    }
+
+    /* Scroll hint */
+    .scroll-hint {
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+        color: var(--ink-3);
+        opacity: 0;
+        animation: 
+            scrollHintFadeIn 0.8s var(--ease) 1.2s forwards,
+            scrollHintBounce 2.4s ease-in-out 1.8s infinite;
+        transition: opacity 0.4s var(--ease);
+    }
+    .scroll-hint.hidden { opacity: 0 !important; }
+    .scroll-hint svg { width: 100%; height: 100%; }
+
+    @keyframes scrollHintFadeIn {
+        to { opacity: 0.5; }
+    }
+    @keyframes scrollHintBounce {
+        0%, 100% { transform: translateX(-50%) translateY(0); }
+        50%      { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ------------------------------------------------------
+       DASHBOARD (setelah hero)
+       ------------------------------------------------------ */
+    #dashboard {
+        margin-top: 0;
+    }
+
+    /* ------------------------------------------------------
+       STATS GRID — mobile jadi stacked
+       ------------------------------------------------------ */
     .stats-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        border-top: 2px solid var(--ink);
+        border-bottom: 1px solid var(--rule);
+        padding: 32px 0 36px;
+        margin-bottom: 40px;
         gap: 0;
     }
-    .stat-card.blue {
-        padding: 0 0 32px 0;
+
+    .stat-card {
+        padding: 0 20px 24px;
         border-right: none;
         border-bottom: 1px solid var(--rule);
-        margin-bottom: 24px;
+        position: relative;
     }
-    .stat-card.blue::before { display: none; }
-    .stat-card.blue .stat-number { font-size: 64px; }
-    .stat-card.purple,
-    .stat-card.green,
-    .stat-card.red {
+    .stat-card:nth-child(odd) {
         padding-left: 0;
+        padding-right: 16px;
+        border-right: 1px solid var(--rule);
     }
-}
+    .stat-card:nth-child(even) {
+        padding-left: 16px;
+        padding-right: 0;
+    }
+    .stat-card:nth-last-child(-n+2) { border-bottom: none; padding-bottom: 0; }
 
-@media (max-width: 640px) {
-    .container { padding: 0 18px 40px; }
-    .header { padding: 22px 0 18px; margin-bottom: 32px; }
-    .header h1 { font-size: 13px; letter-spacing: 0.08em; }
-    .header .nama-guru { font-size: 9.5px; }
-    .profile-avatar { width: 34px; height: 34px; }
+    .stat-card .stat-label {
+        font-size: 9.5px;
+        margin-bottom: 12px;
+        padding-bottom: 10px;
+    }
+    .stat-card .stat-label::after { width: 18px; }
 
-    .hero { margin-bottom: 40px; }
-    .hero-name { font-size: 30px; }
-    .hero-greeting { font-size: 10px; letter-spacing: 0.2em; }
-    .hero-status { font-size: 13.5px; }
+    .stat-card .stat-number {
+        font-size: 38px;
+        letter-spacing: -0.04em;
+    }
 
-    .stat-card.blue .stat-number { font-size: 54px; }
-    .stat-card.purple .stat-number,
-    .stat-card.green .stat-number,
-    .stat-card.red .stat-number { font-size: 26px; }
+    /* ------------------------------------------------------
+       NAV TABS — hide di mobile
+       ------------------------------------------------------ */
+    .nav-tabs { display: none; }
 
-    .nav-tabs { gap: 24px; }
-    .nav-tabs button { font-size: 12px; padding: 12px 0; }
-    .nav-tabs button i { display: none; }
+    /* ------------------------------------------------------
+       REVEAL animation untuk section
+       ------------------------------------------------------ */
+    .reveal {
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+    }
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
 
-    table { font-size: 13px; }
-    th { padding: 14px 8px 8px; font-size: 9px; }
-    td { padding: 16px 8px; font-size: 13px; }
+    /* ------------------------------------------------------
+       FILTER — compact
+       ------------------------------------------------------ */
+    .filter-section {
+        gap: 12px;
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+    }
+    .filter-section label { font-size: 9.5px; }
+    .filter-select {
+        font-size: 13px;
+        padding: 6px 28px 6px 0;
+        min-width: 140px;
+    }
+    .btn-reset { font-size: 12px; }
 
-    .modal-box { padding: 28px 22px 22px; }
+    /* ------------------------------------------------------
+       TABLE — mobile 2-baris per entri
+       ------------------------------------------------------ */
+    .table-wrap {
+        margin-top: 0;
+        border-top: none;
+    }
+
+    table { font-size: 13px; min-width: 100%; }
+
+    thead { display: none; }
+
+    tbody tr {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "date   arrow"
+            "detail arrow";
+        padding: 18px 0;
+        border-bottom: 1px solid var(--rule);
+        gap: 6px 12px;
+        align-items: center;
+    }
+    tbody tr:last-child { border-bottom: none; }
+
+    tbody tr td {
+        padding: 0;
+        border: none;
+        font-size: inherit;
+    }
+
+    tbody tr td:first-child {
+        grid-area: date;
+        font-family: 'Geist Mono', monospace;
+        font-weight: 600;
+        font-size: 13.5px;
+        color: var(--ink);
+        letter-spacing: -0.02em;
+    }
+    tbody tr td:nth-child(2) {
+        grid-area: detail;
+        display: inline;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--ink-3);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+    }
+    tbody tr td:nth-child(3) {
+        grid-area: detail;
+        display: inline;
+        margin-left: 8px;
+    }
+    tbody tr td:nth-child(4) {
+        grid-area: detail;
+        display: inline;
+        margin-left: 8px;
+        font-family: 'Geist Mono', monospace;
+        font-size: 12px;
+        color: var(--ink-2);
+    }
+    tbody tr td:nth-child(5),
+    tbody tr td.arrow-cell {
+        grid-area: arrow;
+        text-align: right;
+        color: var(--ink-4);
+        align-self: center;
+    }
+
+    /* Kolom tanggal & detail di baris 2 sudah pakai inline */
+    tbody tr td:nth-child(2)::after {
+        content: ' · ';
+        color: var(--ink-4);
+        margin: 0 2px;
+    }
+    tbody tr td:nth-child(3)::after {
+        content: ' · ';
+        color: var(--ink-4);
+        margin: 0 2px;
+    }
+
+    .tag {
+        font-size: 10.5px;
+        padding: 2px 8px;
+    }
+
+    /* ------------------------------------------------------
+       MODAL — bottom sheet style
+       ------------------------------------------------------ */
+    .modal-overlay {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .modal-box {
+        max-width: 100%;
+        width: 100%;
+        border-radius: 16px 16px 0 0;
+        padding: 28px 24px calc(32px + env(safe-area-inset-bottom));
+        transform: translateY(100%);
+        max-height: 88vh;
+    }
+    .modal-overlay.open .modal-box {
+        transform: translateY(0);
+    }
+
+    .modal-title { font-size: 16px; margin-bottom: 20px; }
+    .modal-item { padding: 12px 0; }
     .modal-item .modal-label { font-size: 9.5px; }
-    .modal-item .modal-value { font-size: 13.5px; }
+    .modal-item .modal-value { font-size: 14px; }
 
-    .profile-modal-box { padding: 32px 24px 24px; }
-    .profile-modal-avatar { width: 76px; height: 76px; }
-    .profile-modal-name { font-size: 21px; }
+    /* ------------------------------------------------------
+       PROFILE MODAL — full width bottom sheet
+       ------------------------------------------------------ */
+    .profile-modal-overlay {
+        align-items: flex-end;
+        padding: 0;
+    }
 
-    .salary-entry-card { padding: 26px 20px; }
-    .salary-entry-card::before { top: 26px; right: 20px; }
-    .salary-entry-title { font-size: 17px; }
-    .salary-entry-desc { font-size: 11.5px; }
+    .profile-modal-box {
+        max-width: 100%;
+        width: 100%;
+        border-radius: 16px 16px 0 0;
+        padding: 32px 24px calc(36px + env(safe-area-inset-bottom));
+        transform: translateY(100%);
+        max-height: 88vh;
+    }
+    .profile-modal-overlay.open .profile-modal-box {
+        transform: translateY(0);
+    }
+
+    .profile-modal-name { font-size: 22px; }
+    .profile-modal-avatar { width: 80px; height: 80px; }
+
+    /* ------------------------------------------------------
+       REKAP — salary entry jadi stacked
+       ------------------------------------------------------ */
+    .card-grid-salary {
+        grid-template-columns: 1fr;
+        border-top: 2px solid var(--ink);
+    }
+    .salary-entry-card {
+        padding: 32px 0;
+        border-right: none;
+        border-bottom: 1px solid var(--rule);
+    }
+    .salary-entry-card:last-child { border-bottom: none; }
+    .salary-entry-card::before {
+        top: 32px;
+        right: 0;
+    }
+    .salary-entry-title { font-size: 20px; }
+
+    /* ------------------------------------------------------
+       FOOTER
+       ------------------------------------------------------ */
+    .footer-credit {
+        margin-top: 60px;
+        padding-top: 24px;
+        font-size: 9.5px;
+        letter-spacing: 0.24em;
+    }
+
+    /* ------------------------------------------------------
+       BOTTOM NAV — fixed
+       ------------------------------------------------------ */
+    .mobile-nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        padding-bottom: env(safe-area-inset-bottom);
+        background: rgba(251, 248, 241, 0.92);
+        backdrop-filter: blur(20px) saturate(160%);
+        -webkit-backdrop-filter: blur(20px) saturate(160%);
+        border-top: 1px solid var(--rule);
+        z-index: 600;
+    }
+
+    .mobile-nav-btn {
+        flex: 1;
+        height: 64px;
+        background: transparent;
+        border: none;
+        color: var(--ink-3);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        transition: color 0.3s var(--ease);
+        -webkit-tap-highlight-color: transparent;
+    }
+    .mobile-nav-btn i,
+    .mobile-nav-btn svg {
+        width: 20px;
+        height: 20px;
+        transition: opacity 0.25s var(--ease), transform 0.35s var(--ease);
+    }
+    .mobile-nav-btn:active i,
+    .mobile-nav-btn:active svg {
+        transform: scale(0.85);
+    }
+
+    /* Saat tab ini aktif — icon-nya disembunyikan (karena ada di lingkaran) */
+    .mobile-nav-btn.active i,
+    .mobile-nav-btn.active svg {
+        opacity: 0;
+    }
+
+    /* Indikator lingkaran */
+    .mobile-nav-indicator {
+        position: absolute;
+        top: -18px;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--maroon);
+        color: var(--paper);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow:
+            0 8px 20px -6px rgba(107, 40, 40, 0.45),
+            0 2px 6px rgba(20, 17, 13, 0.15);
+        transition: transform 0.5s var(--ease-spring);
+        pointer-events: none;
+        z-index: 1;
+        will-change: transform;
+    }
+    .mobile-nav-indicator i,
+    .mobile-nav-indicator svg {
+        width: 22px;
+        height: 22px;
+        color: var(--paper);
+    }
+
+    /* Mobile back button */
+    .mobile-back {
+        display: none;
+        position: fixed;
+        top: 16px;
+        left: 16px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(251, 248, 241, 0.9);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--rule-strong);
+        color: var(--ink);
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        z-index: 550;
+        transition: transform 0.3s var(--ease), background 0.25s, color 0.25s;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .mobile-back.visible { display: flex; }
+    .mobile-back:active { transform: scale(0.92); }
+    .mobile-back i,
+    .mobile-back svg { width: 18px; height: 18px; }
+
+    /* ------------------------------------------------------
+       STATE: view = tab
+       ------------------------------------------------------ */
+    body[data-view="tab"] .hero { display: none; }
+    body[data-view="tab"] .stats-grid { display: none; }
+
+    body[data-view="tab"] .header {
+        background: rgba(251, 248, 241, 0.85);
+        backdrop-filter: blur(16px) saturate(140%);
+        -webkit-backdrop-filter: blur(16px) saturate(140%);
+        border-bottom-color: var(--rule);
+    }
+
+    body[data-view="tab"] #contentArea {
+        padding-top: 80px;
+    }
+
+    /* ------------------------------------------------------
+       GO TOP — mobile position
+       ------------------------------------------------------ */
+    .go-top {
+        bottom: calc(80px + env(safe-area-inset-bottom));
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+    .go-top i,
+    .go-top svg { width: 16px; height: 16px; }
 }
 
+/* ------------------------------------------------------------
+   RESPONSIVE — Tablet
+   ------------------------------------------------------------ */
+@media (max-width: 900px) and (min-width: 641px) {
+    .container { padding: 0 24px 60px; }
+    .stat-card .stat-number { font-size: 44px; }
+    .hero-name { font-size: 36px; }
+}
+
+/* ------------------------------------------------------------
+   RESPONSIVE — Small mobile
+   ------------------------------------------------------------ */
 @media (max-width: 420px) {
-    .container { padding: 0 16px 32px; }
-    .header h1 { font-size: 12px; }
-    .header h1 .badge { font-size: 9px; padding: 2px 6px; }
-    .profile-avatar { width: 32px; height: 32px; }
-    .hero-name { font-size: 26px; }
-    .stat-card.blue .stat-number { font-size: 46px; }
-    .stat-card.purple .stat-number,
-    .stat-card.green .stat-number,
-    .stat-card.red .stat-number { font-size: 22px; }
-    .salary-entry-desc { display: none; }
-    .salary-entry-card { padding: 22px 16px; }
-    .salary-entry-title { font-size: 15px; }
-    .go-top { bottom: 20px; right: 20px; width: 40px; height: 40px; }
+    .container { padding: 0 16px calc(90px + env(safe-area-inset-bottom)); }
+    .header { padding: 14px 16px; }
+
+    .hero-name { font-size: 36px; }
+    .hero-greeting { font-size: 10px; }
+    .hero-status { font-size: 14px; }
+
+    .stat-card .stat-number { font-size: 32px; }
+    .stat-card .stat-label { font-size: 9px; }
+
+    tbody tr td:first-child { font-size: 13px; }
+    tbody tr td:nth-child(2),
+    tbody tr td:nth-child(3),
+    tbody tr td:nth-child(4) { font-size: 10.5px; }
+
+    .mobile-nav { height: 60px; }
+    .mobile-nav-btn { height: 60px; }
+    .mobile-nav-indicator { width: 52px; height: 52px; }
 }
 
+/* ------------------------------------------------------------
+   RESPONSIVE — Large desktop
+   ------------------------------------------------------------ */
 @media (min-width: 1024px) {
-    .container { max-width: 920px; padding: 0 32px 80px; }
+    .container { max-width: 1000px; padding: 0 40px 100px; }
     .header { padding: 32px 0 26px; margin-bottom: 56px; }
-    .hero-name { font-size: 48px; }
-    .stat-card.blue .stat-number { font-size: 96px; }
-    .stat-card.purple .stat-number,
-    .stat-card.green .stat-number,
-    .stat-card.red .stat-number { font-size: 36px; }
+    .stat-card .stat-number { font-size: 64px; }
 }
 
 /* ------------------------------------------------------------
@@ -1351,4 +1733,5 @@ tbody tr:nth-child(even) { background: transparent; }
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
+    .reveal { opacity: 1 !important; transform: none !important; }
 }
