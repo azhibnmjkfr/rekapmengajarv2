@@ -77,7 +77,7 @@
             </div>
         </div>
 
-        <!-- AKSES CEPAT MOBILE -->
+        <!-- AKSES CEPAT (mobile) -->
         <div class="mobile-quick-access">
             <div class="mobile-qa-label">Akses Cepat</div>
             <a href="salary/success.html" class="mobile-qa-card">
@@ -101,7 +101,6 @@
         <!-- CONTENT -->
         <div id="contentArea">
 
-            <!-- SEMUA -->
             <div id="semuaContent">
                 <div class="filter-section">
                     <label><i data-lucide="calendar"></i> Periode</label>
@@ -135,7 +134,6 @@
                 </div>
             </div>
 
-            <!-- REGULER -->
             <div id="regulerContent" style="display:none;">
                 <div class="filter-section">
                     <label><i data-lucide="calendar"></i> Periode</label>
@@ -169,7 +167,6 @@
                 </div>
             </div>
 
-            <!-- CLUB -->
             <div id="clubContent" style="display:none;">
                 <div class="filter-section">
                     <label><i data-lucide="calendar"></i> Periode</label>
@@ -203,7 +200,6 @@
                 </div>
             </div>
 
-            <!-- REKAP -->
             <div id="rekapContent" style="display:none;">
                 <div class="rekap-area rekap-area-top">
                     <div class="rekap-list" id="rekapList"></div>
@@ -229,21 +225,25 @@
         <div class="footer-credit">created by Azhibnmjkfr</div>
     </div>
 
-    <!-- MOBILE NAV -->
+    <!-- MOBILE NAV — 5 item (Home + 4 tab) -->
     <nav class="mobile-nav" id="mobileNav">
-        <button class="mobile-nav-btn active" data-tab="semua">
+        <button class="mobile-nav-btn active" data-nav="home" aria-label="Beranda">
+            <i data-lucide="home"></i>
+            <span>Beranda</span>
+        </button>
+        <button class="mobile-nav-btn" data-nav="semua" aria-label="Semua">
             <i data-lucide="grid"></i>
             <span>Semua</span>
         </button>
-        <button class="mobile-nav-btn" data-tab="reguler">
+        <button class="mobile-nav-btn" data-nav="reguler" aria-label="Reguler">
             <i data-lucide="clock"></i>
             <span>Reguler</span>
         </button>
-        <button class="mobile-nav-btn" data-tab="club">
+        <button class="mobile-nav-btn" data-nav="club" aria-label="Club">
             <i data-lucide="users"></i>
             <span>Club</span>
         </button>
-        <button class="mobile-nav-btn" data-tab="rekap">
+        <button class="mobile-nav-btn" data-nav="rekap" aria-label="Rekap">
             <i data-lucide="bar-chart-2"></i>
             <span>Rekap</span>
         </button>
