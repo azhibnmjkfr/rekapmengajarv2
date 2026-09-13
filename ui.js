@@ -68,7 +68,21 @@
         statsObserver.observe(statsGrid, { subtree: true, childList: true, characterData: true });
     }
 
-    /* 4. STAGGER TABLE */
+    /* 4. STAGGER + INJECT data-hari ke tabel */
+    function injectDataHari(tbody) {
+        if (!tbody) return;
+        tbody.querySelectorAll('tr.row-clickable').forEach(row => {
+            // Ambil hari dari kolom ke-2 (index 1)
+            const hariCell = row.children[1];
+            if (hariCell && !row.dataset.hari) {
+                const hari = hariCell.textContent.trim();
+                if (hari && hari !== '-') {
+                    row.dataset.hari = hari;
+                }
+            }
+        });
+    }
+
     function applyStagger(tbody) {
         if (!tbody || tbody.dataset.staggered) return;
         const rows = tbody.querySelectorAll('tr');
@@ -85,12 +99,12 @@
         tbody.dataset.staggered = '1';
     }
 
-    ['tableSemua', 'tableReguler', 'tableClub', 'tableBody'].forEach(id => {
+    ['tableSemua', 'tableReguler', 'tableClub'].forEach(id => {
         const tbody = document.getElementById(id);
         if (!tbody) return;
         const obs = new MutationObserver(() => {
-            if (tbody.querySelectorAll('tr').length > 1 ||
-                (tbody.querySelector('tr') && !tbody.querySelector('tr').classList.contains('loading'))) {
+            if (tbody.querySelectorAll('tr.row-clickable').length > 0) {
+                injectDataHari(tbody);
                 applyStagger(tbody);
                 obs.disconnect();
             }
@@ -98,7 +112,7 @@
         obs.observe(tbody, { childList: true });
     });
 
-    /* 5. BOTTOM NAV — 5 item */
+    /* 5. BOTTOM NAV */
     const mobileNav = document.getElementById('mobileNav');
     const mobileNavBtns = mobileNav ? mobileNav.querySelectorAll('.mobile-nav-btn') : [];
 
@@ -111,20 +125,26 @@
             const nav = btn.dataset.nav;
 
             if (nav === 'home') {
-                // Kembali ke beranda
                 setView('home');
                 activateNav('home');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 return;
             }
 
-            // Tab biasa — trigger switchTab di script.js
             const desktopBtn = document.querySelector(`.nav-tabs button[data-tab="${nav}"]`);
             if (desktopBtn) desktopBtn.click();
 
             setView('tab');
             activateNav(nav);
             window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Re-inject data-hari setelah tabel di-render
+            setTimeout(() => {
+                ['tableSemua', 'tableReguler', 'tableClub'].forEach(id => {
+                    const tbody = document.getElementById(id);
+                    if (tbody) injectDataHari(tbody);
+                });
+            }, 100);
         });
     });
 
