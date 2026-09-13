@@ -12,13 +12,12 @@
 </head>
 <body>
 
-    <!-- ===== LOADING SCREEN ===== -->
+    <!-- LOADING -->
     <div id="loadingScreen">
         <div class="loading-content">
             <h1 class="loading-title">Rekap Mengajar SIAQ</h1>
             <div class="loading-name">Ahmad Zaman Huri</div>
             <div class="loading-year">2026/2027</div>
-
             <div class="loading-bar-wrap">
                 <div class="loading-bar">
                     <div class="loading-bar-fill" id="loadingFill"></div>
@@ -31,7 +30,7 @@
         </div>
     </div>
 
-    <!-- ===== TOP BAR ===== -->
+    <!-- HEADER -->
     <header class="header" id="headerHome">
         <div class="header-top">
             <div>
@@ -49,47 +48,46 @@
         </div>
     </header>
 
-    <!-- ===== HERO (mobile only) ===== -->
-    <section class="hero">
-        <div class="hero-greeting" id="heroGreeting">Selamat pagi,</div>
-        <div class="hero-name" id="heroName">Ahmad.</div>
-        <div class="hero-line"></div>
-        <div class="hero-status" id="heroStatus">
-            Memuat data sesi Anda.
-        </div>
-        <div class="scroll-hint" id="scrollHint" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 5v14"/>
-                <path d="m19 12-7 7-7-7"/>
-            </svg>
-        </div>
-    </section>
-
-    <!-- ===== DASHBOARD ===== -->
+    <!-- DASHBOARD -->
     <div class="container" id="dashboard">
 
+        <!-- SAPAAN MOBILE -->
+        <div class="mobile-greeting">
+            <div class="mobile-greeting-line-1" id="heroGreeting">Selamat pagi,</div>
+            <div class="mobile-greeting-line-2" id="heroStatus">Memuat data sesi.</div>
+        </div>
+
         <!-- STATISTIK -->
-        <div class="stats-grid reveal" id="statsGrid">
+        <div class="stats-grid" id="statsGrid">
             <div class="stat-card blue">
-                <div class="stat-icon"><i data-lucide="clock"></i></div>
                 <div class="stat-label">Total Jam</div>
                 <div class="stat-number" id="statJam">-</div>
             </div>
             <div class="stat-card purple">
-                <div class="stat-icon"><i data-lucide="calendar"></i></div>
                 <div class="stat-label">Pertemuan</div>
                 <div class="stat-number" id="statPertemuan">-</div>
             </div>
             <div class="stat-card green">
-                <div class="stat-icon"><i data-lucide="check-circle"></i></div>
                 <div class="stat-label">Sudah diproses</div>
                 <div class="stat-number" id="statSudah">-</div>
             </div>
             <div class="stat-card red">
-                <div class="stat-icon"><i data-lucide="clock"></i></div>
                 <div class="stat-label">Belum diproses</div>
                 <div class="stat-number" id="statBelum">-</div>
             </div>
+        </div>
+
+        <!-- AKSES CEPAT MOBILE -->
+        <div class="mobile-quick-access">
+            <div class="mobile-qa-label">Akses Cepat</div>
+            <a href="salary/success.html" class="mobile-qa-card">
+                <div class="mobile-qa-title">Success</div>
+                <div class="mobile-qa-cta">Lihat →</div>
+            </a>
+            <a href="salary/pending.html" class="mobile-qa-card">
+                <div class="mobile-qa-title">Pending</div>
+                <div class="mobile-qa-cta">Lihat →</div>
+            </a>
         </div>
 
         <!-- NAV TABS (desktop) -->
@@ -125,9 +123,7 @@
                                 </tr>
                             </thead>
                             <tbody id="tableSemua">
-                                <tr>
-                                    <td colspan="5" class="loading"><div class="spinner"></div>Memuat data …</td>
-                                </tr>
+                                <tr><td colspan="5" class="loading"><div class="spinner"></div>Memuat data …</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -161,9 +157,7 @@
                                 </tr>
                             </thead>
                             <tbody id="tableReguler">
-                                <tr>
-                                    <td colspan="5" class="loading"><div class="spinner"></div>Memuat data …</td>
-                                </tr>
+                                <tr><td colspan="5" class="loading"><div class="spinner"></div>Memuat data …</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -197,9 +191,7 @@
                                 </tr>
                             </thead>
                             <tbody id="tableClub">
-                                <tr>
-                                    <td colspan="5" class="loading"><div class="spinner"></div>Memuat data …</td>
-                                </tr>
+                                <tr><td colspan="5" class="loading"><div class="spinner"></div>Memuat data …</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -216,18 +208,15 @@
                 <div class="rekap-area rekap-area-top">
                     <div class="rekap-list" id="rekapList"></div>
                 </div>
-
                 <div class="rekap-divider">
                     <span class="rekap-divider-line"></span>
                 </div>
-
-                <div class="rekap-area rekap-area-bottom reveal">
+                <div class="rekap-area rekap-area-bottom">
                     <div class="card-grid-salary">
                         <a href="salary/success.html" class="salary-entry-card">
                             <div class="salary-entry-title">Success</div>
                             <div class="salary-entry-desc">Rekap yang sudah diproses</div>
                         </a>
-
                         <a href="salary/pending.html" class="salary-entry-card">
                             <div class="salary-entry-title">Pending</div>
                             <div class="salary-entry-desc">Rekap yang belum diproses</div>
@@ -240,36 +229,30 @@
         <div class="footer-credit">created by Azhibnmjkfr</div>
     </div>
 
-    <!-- ===== MOBILE BOTTOM NAV ===== -->
-    <nav class="mobile-nav" id="mobileNav" aria-label="Navigasi utama">
-        <button class="mobile-nav-btn active" data-tab="semua" aria-label="Semua">
+    <!-- MOBILE NAV -->
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-btn active" data-tab="semua">
             <i data-lucide="grid"></i>
+            <span>Semua</span>
         </button>
-        <button class="mobile-nav-btn" data-tab="reguler" aria-label="Reguler">
+        <button class="mobile-nav-btn" data-tab="reguler">
             <i data-lucide="clock"></i>
+            <span>Reguler</span>
         </button>
-        <button class="mobile-nav-btn" data-tab="club" aria-label="Club">
+        <button class="mobile-nav-btn" data-tab="club">
             <i data-lucide="users"></i>
+            <span>Club</span>
         </button>
-        <button class="mobile-nav-btn" data-tab="rekap" aria-label="Rekap">
+        <button class="mobile-nav-btn" data-tab="rekap">
             <i data-lucide="bar-chart-2"></i>
+            <span>Rekap</span>
         </button>
-        <span class="mobile-nav-indicator" id="mobileNavIndicator" aria-hidden="true">
-            <i data-lucide="grid" id="mobileNavIcon"></i>
-        </span>
     </nav>
 
-    <!-- ===== MOBILE BACK BUTTON ===== -->
-    <button class="mobile-back" id="mobileBack" aria-label="Kembali ke beranda">
-        <i data-lucide="arrow-left"></i>
-    </button>
-
-    <!-- ===== MODAL DETAIL JADWAL ===== -->
+    <!-- MODAL DETAIL -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-box" id="modalBox">
-            <button class="modal-close" id="modalClose">
-                <i data-lucide="x"></i>
-            </button>
+            <button class="modal-close" id="modalClose"><i data-lucide="x"></i></button>
             <div class="modal-title" id="modalTitle">
                 <span class="info-icon"><i data-lucide="info"></i></span>
                 Detail
@@ -285,12 +268,10 @@
         </div>
     </div>
 
-    <!-- ===== MODAL REKAP ===== -->
+    <!-- MODAL REKAP -->
     <div class="modal-overlay" id="modalRekapOverlay">
         <div class="modal-box" id="modalRekapBox">
-            <button class="modal-close" id="modalRekapClose">
-                <i data-lucide="x"></i>
-            </button>
+            <button class="modal-close" id="modalRekapClose"><i data-lucide="x"></i></button>
             <div class="modal-title" id="modalRekapTitle">
                 <span class="info-icon"><i data-lucide="bar-chart-2"></i></span>
                 Detail Rekap
@@ -343,12 +324,10 @@
         </div>
     </div>
 
-    <!-- ===== MODAL PROFIL ===== -->
+    <!-- MODAL PROFIL -->
     <div class="profile-modal-overlay" id="profileModal">
         <div class="profile-modal-box">
-            <button class="profile-modal-close" id="profileModalClose">
-                <i data-lucide="x"></i>
-            </button>
+            <button class="profile-modal-close" id="profileModalClose"><i data-lucide="x"></i></button>
             <div class="profile-modal-content">
                 <div class="profile-modal-avatar">
                     <img src="assets/imgprofile.png" alt="Ahmad Zaman Huri" />
@@ -356,30 +335,16 @@
                 <h2 class="profile-modal-name">Ahmad Zaman Huri</h2>
                 <p class="profile-modal-role">Guru Bahasa Inggris</p>
                 <p class="profile-modal-school">Sekolah Islam Akhlaqul Quran</p>
-
                 <div class="profile-modal-divider"></div>
-
                 <div class="profile-modal-info">
-                    <div class="profile-modal-item">
-                        <i data-lucide="mail"></i>
-                        <span>ahmadzamanhuri.jakfar@gmail.com</span>
-                    </div>
-                    <div class="profile-modal-item">
-                        <i data-lucide="phone"></i>
-                        <span>+62 822-4607-7303</span>
-                    </div>
-                    <div class="profile-modal-item">
-                        <i data-lucide="map-pin"></i>
-                        <span>Keutapang, Aceh Besar</span>
-                    </div>
+                    <div class="profile-modal-item"><i data-lucide="mail"></i><span>ahmadzamanhuri.jakfar@gmail.com</span></div>
+                    <div class="profile-modal-item"><i data-lucide="phone"></i><span>+62 822-4607-7303</span></div>
+                    <div class="profile-modal-item"><i data-lucide="map-pin"></i><span>Keutapang, Aceh Besar</span></div>
                 </div>
-
                 <div class="profile-modal-divider"></div>
-
                 <div class="profile-modal-bio">
                     <p>"Mengajar bukan hanya tentang memberi tahu,<br />tapi tentang menumbuhkan rasa ingin tahu."</p>
                 </div>
-
                 <a href="https://wa.me/6282246077307" class="profile-modal-wa" target="_blank">
                     <i data-lucide="message-circle"></i> Hubungi via WhatsApp
                 </a>
@@ -387,7 +352,6 @@
         </div>
     </div>
 
-    <!-- GO TOP -->
     <button class="go-top" id="goTop"><i data-lucide="chevron-up"></i></button>
 
     <script src="script.js"></script>
