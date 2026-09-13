@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id" data-theme="dark">
+<html lang="id">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-    <meta name="theme-color" content="#080B10" />
+    <meta name="theme-color" content="#FAF7F0" />
     <title>Rekap Mengajar — SIAQ</title>
 
     <link rel="preconnect" href="https://unpkg.com" />
@@ -34,16 +34,16 @@
     <!-- ===== DASHBOARD ===== -->
     <div class="container" id="dashboard">
 
-        <!-- HEADER -->
+        <!-- TOP BAR -->
         <div class="header" id="headerHome">
             <div class="header-top">
                 <div>
                     <h1>
-                        <span>Rekap Mengajar</span>
-                        <span class="badge">SIAQ</span>
+                        <span>SIAQ</span>
+                        <span class="badge">Rekap Mengajar</span>
                     </h1>
                     <div class="nama-guru">
-                        <i data-lucide="user"></i> Ahmad Zaman Huri
+                        <i data-lucide="user"></i> Ahmad Zaman Huri · 2026/2027
                     </div>
                 </div>
                 <div class="profile-avatar" id="profileTrigger">
@@ -52,27 +52,36 @@
             </div>
         </div>
 
+        <!-- HERO — sapaan personal -->
+        <div class="hero">
+            <div class="hero-greeting" id="heroGreeting">Selamat datang</div>
+            <div class="hero-name">Ahmad Zaman Huri.</div>
+            <div class="hero-status" id="heroStatus">
+                Anda memiliki <strong>—</strong> sesi yang menunggu verifikasi.
+            </div>
+        </div>
+
         <!-- STATISTIK -->
         <div class="stats-grid" id="statsGrid">
             <div class="stat-card blue">
-                <div class="stat-icon"><i data-lucide="calendar"></i></div>
-                <div class="stat-number" id="statPertemuan">-</div>
-                <div class="stat-label">Pertemuan</div>
-            </div>
-            <div class="stat-card purple">
                 <div class="stat-icon"><i data-lucide="clock"></i></div>
                 <div class="stat-number" id="statJam">-</div>
                 <div class="stat-label">Total Jam</div>
             </div>
+            <div class="stat-card purple">
+                <div class="stat-icon"><i data-lucide="calendar"></i></div>
+                <div class="stat-label">Pertemuan</div>
+                <div class="stat-number" id="statPertemuan">-</div>
+            </div>
             <div class="stat-card green">
                 <div class="stat-icon"><i data-lucide="check-circle"></i></div>
+                <div class="stat-label">Sudah diproses</div>
                 <div class="stat-number" id="statSudah">-</div>
-                <div class="stat-label">Sudah Diproses</div>
             </div>
             <div class="stat-card red">
                 <div class="stat-icon"><i data-lucide="clock"></i></div>
+                <div class="stat-label">Belum diproses</div>
                 <div class="stat-number" id="statBelum">-</div>
-                <div class="stat-label">Belum Diproses</div>
             </div>
         </div>
 
@@ -90,7 +99,7 @@
             <!-- SEMUA -->
             <div id="semuaContent">
                 <div class="filter-section">
-                    <label><i data-lucide="calendar"></i> Pilih Bulan</label>
+                    <label><i data-lucide="calendar"></i> Periode</label>
                     <select class="filter-select" id="filterSemua">
                         <option value="">— Pilih Bulan —</option>
                     </select>
@@ -105,7 +114,7 @@
                                     <th>Hari</th>
                                     <th>Kelas</th>
                                     <th>Jam</th>
-                                    <th style="text-align:center;width:40px;"></th>
+                                    <th style="text-align:right;width:32px;"></th>
                                 </tr>
                             </thead>
                             <tbody id="tableSemua">
@@ -118,7 +127,7 @@
                 </div>
                 <div id="emptySemua" class="empty-state">
                     <i data-lucide="calendar"></i>
-                    <div class="empty-title">Pilih Bulan</div>
+                    <div class="empty-title">Pilih Periode</div>
                     <div class="empty-desc">Silakan pilih bulan dari dropdown untuk melihat jadwal.</div>
                 </div>
             </div>
@@ -126,7 +135,7 @@
             <!-- REGULER -->
             <div id="regulerContent" style="display:none;">
                 <div class="filter-section">
-                    <label><i data-lucide="calendar"></i> Pilih Bulan</label>
+                    <label><i data-lucide="calendar"></i> Periode</label>
                     <select class="filter-select" id="filterReguler">
                         <option value="">— Pilih Bulan —</option>
                     </select>
@@ -141,7 +150,7 @@
                                     <th>Hari</th>
                                     <th>Kelas</th>
                                     <th>Jam</th>
-                                    <th style="text-align:center;width:40px;"></th>
+                                    <th style="text-align:right;width:32px;"></th>
                                 </tr>
                             </thead>
                             <tbody id="tableReguler">
@@ -154,7 +163,7 @@
                 </div>
                 <div id="emptyReguler" class="empty-state">
                     <i data-lucide="clock"></i>
-                    <div class="empty-title">Pilih Bulan</div>
+                    <div class="empty-title">Pilih Periode</div>
                     <div class="empty-desc">Silakan pilih bulan dari dropdown untuk melihat jadwal reguler.</div>
                 </div>
             </div>
@@ -162,7 +171,7 @@
             <!-- CLUB -->
             <div id="clubContent" style="display:none;">
                 <div class="filter-section">
-                    <label><i data-lucide="calendar"></i> Pilih Bulan</label>
+                    <label><i data-lucide="calendar"></i> Periode</label>
                     <select class="filter-select" id="filterClub">
                         <option value="">— Pilih Bulan —</option>
                     </select>
@@ -177,7 +186,7 @@
                                     <th>Hari</th>
                                     <th>Kelas</th>
                                     <th>Jam</th>
-                                    <th style="text-align:center;width:40px;"></th>
+                                    <th style="text-align:right;width:32px;"></th>
                                 </tr>
                             </thead>
                             <tbody id="tableClub">
@@ -190,7 +199,7 @@
                 </div>
                 <div id="emptyClub" class="empty-state">
                     <i data-lucide="users"></i>
-                    <div class="empty-title">Pilih Bulan</div>
+                    <div class="empty-title">Pilih Periode</div>
                     <div class="empty-desc">Silakan pilih bulan dari dropdown untuk melihat jadwal club.</div>
                 </div>
             </div>
@@ -209,12 +218,12 @@
                     <div class="card-grid-salary">
                         <a href="salary/success.html" class="salary-entry-card">
                             <div class="salary-entry-title">Success</div>
-                            <div class="salary-entry-desc">Lihat rekap yang sudah diproses</div>
+                            <div class="salary-entry-desc">Rekap yang sudah diproses</div>
                         </a>
 
                         <a href="salary/pending.html" class="salary-entry-card">
                             <div class="salary-entry-title">Pending</div>
-                            <div class="salary-entry-desc">Lihat rekap yang belum diproses</div>
+                            <div class="salary-entry-desc">Rekap yang belum diproses</div>
                         </a>
                     </div>
                 </div>
@@ -257,48 +266,47 @@
             </div>
             <div id="modalRekapBody">
                 <div class="modal-item">
-                    <span class="modal-label"><i data-lucide="check-circle" style="color:#4ADE80;width:16px;height:16px;"></i> Reguler</span>
+                    <span class="modal-label"><i data-lucide="check-circle" style="color:#2F6F4E;width:14px;height:14px;"></i> Reguler</span>
                     <span class="modal-value" id="modalRekapRegSukses">-</span>
                 </div>
-                <div class="modal-item" style="padding-left:20px;font-size:13px;">
+                <div class="modal-item" style="padding-left:20px;">
                     <span class="modal-label" style="font-weight:400;">Fee</span>
                     <span class="modal-value" id="modalRekapRegSuksesFee">-</span>
                 </div>
                 <div class="modal-item">
-                    <span class="modal-label"><i data-lucide="check-circle" style="color:#4ADE80;width:16px;height:16px;"></i> <span style="color:#93C5FD;">Club</span></span>
+                    <span class="modal-label"><i data-lucide="check-circle" style="color:#2F6F4E;width:14px;height:14px;"></i> Club</span>
                     <span class="modal-value" id="modalRekapClubSukses">-</span>
                 </div>
-                <div class="modal-item" style="padding-left:20px;font-size:13px;">
+                <div class="modal-item" style="padding-left:20px;">
                     <span class="modal-label" style="font-weight:400;">Fee</span>
                     <span class="modal-value" id="modalRekapClubSuksesFee">-</span>
                 </div>
-                <div style="padding: 4px 0;"></div>
-                <div class="modal-item" style="border-top:1px solid var(--border);padding-top:12px;margin-top:4px;">
-                    <span class="modal-label" style="font-weight:700;color:#4ADE80;">Total Success</span>
-                    <span class="modal-value" id="modalRekapTotalSukses" style="font-weight:700;color:#4ADE80;">-</span>
-                </div>
-                <div style="padding: 8px 0;border-bottom:1px solid var(--border);"></div>
                 <div style="padding: 6px 0;"></div>
+                <div class="modal-item" style="border-top:1px solid var(--rule);border-bottom:none;padding-top:16px;">
+                    <span class="modal-label" style="font-weight:700;color:#2F6F4E;font-size:11px;">Total Success</span>
+                    <span class="modal-value" id="modalRekapTotalSukses" style="font-weight:700;color:#2F6F4E;">-</span>
+                </div>
+                <div style="padding: 12px 0;"></div>
                 <div class="modal-item">
-                    <span class="modal-label"><i data-lucide="x-circle" style="color:#F87171;width:16px;height:16px;"></i> Reguler</span>
+                    <span class="modal-label"><i data-lucide="x-circle" style="color:#A52A2A;width:14px;height:14px;"></i> Reguler</span>
                     <span class="modal-value" id="modalRekapRegPending">-</span>
                 </div>
-                <div class="modal-item" style="padding-left:20px;font-size:13px;">
+                <div class="modal-item" style="padding-left:20px;">
                     <span class="modal-label" style="font-weight:400;">Fee</span>
                     <span class="modal-value" id="modalRekapRegPendingFee">-</span>
                 </div>
                 <div class="modal-item">
-                    <span class="modal-label"><i data-lucide="x-circle" style="color:#F87171;width:16px;height:16px;"></i> <span style="color:#93C5FD;">Club</span></span>
+                    <span class="modal-label"><i data-lucide="x-circle" style="color:#A52A2A;width:14px;height:14px;"></i> Club</span>
                     <span class="modal-value" id="modalRekapClubPending">-</span>
                 </div>
-                <div class="modal-item" style="padding-left:20px;font-size:13px;">
+                <div class="modal-item" style="padding-left:20px;">
                     <span class="modal-label" style="font-weight:400;">Fee</span>
                     <span class="modal-value" id="modalRekapClubPendingFee">-</span>
                 </div>
-                <div style="padding: 4px 0;"></div>
-                <div class="modal-item" style="border-top:1px solid var(--border);padding-top:12px;margin-top:4px;">
-                    <span class="modal-label" style="font-weight:700;color:#F87171;">Total Pending</span>
-                    <span class="modal-value" id="modalRekapTotalPending" style="font-weight:700;color:#F87171;">-</span>
+                <div style="padding: 6px 0;"></div>
+                <div class="modal-item" style="border-top:1px solid var(--rule);border-bottom:none;padding-top:16px;">
+                    <span class="modal-label" style="font-weight:700;color:#A52A2A;font-size:11px;">Total Pending</span>
+                    <span class="modal-value" id="modalRekapTotalPending" style="font-weight:700;color:#A52A2A;">-</span>
                 </div>
             </div>
         </div>
@@ -338,7 +346,7 @@
                 <div class="profile-modal-divider"></div>
 
                 <div class="profile-modal-bio">
-                    <p>Mengajar bukan hanya tentang memberi tahu,<br />Tapi tentang menumbuhkan rasa ingin tahu.</p>
+                    <p>"Mengajar bukan hanya tentang memberi tahu,<br />tapi tentang menumbuhkan rasa ingin tahu."</p>
                 </div>
 
                 <a href="https://wa.me/6282246077307" class="profile-modal-wa" target="_blank">
