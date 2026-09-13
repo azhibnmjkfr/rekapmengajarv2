@@ -106,17 +106,32 @@ body {
 .header .nama-guru { font-family: 'Geist Mono', monospace; font-size: 10.5px; color: var(--ink-3); display: flex; align-items: center; gap: 6px; margin-top: 6px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; }
 .header .nama-guru i { width: 11px; height: 11px; color: var(--brass); }
 
+/* Header ENGLISH label — desktop default: inline */
+.header-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.header-english {
+    font-family: 'Geist Pixel Square', monospace;
+    font-size: 10px;
+    color: var(--brass);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
 .profile-avatar { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; border: 1.5px solid var(--rule-strong); flex-shrink: 0; cursor: pointer; transition: border-color 0.3s, transform 0.3s var(--ease); }
 .profile-avatar:hover { border-color: var(--maroon); transform: scale(1.05); }
 .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-/* ============ SAPAAN MOBILE (hidden di desktop) ============ */
+/* Mobile greeting (hidden desktop) */
 .mobile-greeting { display: none; }
 
-/* ============ AKSES CEPAT MOBILE (hidden di desktop) ============ */
+/* Mobile quick access (hidden desktop) */
 .mobile-quick-access { display: none; }
 
-/* ============ MOBILE NAV (hidden di desktop) ============ */
+/* Mobile nav (hidden desktop) */
 .mobile-nav { display: none; }
 
 /* ============ STATS ============ */
@@ -132,7 +147,6 @@ body {
 .stat-card { padding: 0; position: relative; }
 .stat-card .stat-icon { display: none; }
 
-/* Hero stat (Total Jam) */
 .stat-card.blue {
     padding-right: 40px;
     border-right: 1px solid var(--rule);
@@ -165,7 +179,6 @@ body {
     line-height: 1;
 }
 
-/* Stat kecil kanan — stack rapi */
 .stat-card.purple,
 .stat-card.green,
 .stat-card.red {
@@ -318,7 +331,7 @@ body {
 .btn-reset:hover { color: var(--maroon); border-bottom-color: var(--maroon); }
 .btn-reset i { width: 12px; height: 12px; }
 
-/* ============ EMPTY STATE ============ */
+/* ============ EMPTY ============ */
 .empty-state { text-align: center; padding: 80px 24px; color: var(--ink-3); }
 .empty-state i { width: 32px; height: 32px; color: var(--ink-4); margin-bottom: 18px; }
 .empty-state .empty-title { font-size: 15px; font-weight: 600; color: var(--ink-2); margin-bottom: 6px; }
@@ -415,7 +428,7 @@ tbody tr td:nth-child(4) {
 .row-clickable .arrow-cell i,
 .row-clickable .arrow-cell svg { width: 16px; height: 16px; }
 
-/* ============ MODAL ============ */
+/* ============ MODAL (default center) ============ */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -440,14 +453,14 @@ tbody tr td:nth-child(4) {
     width: 100%;
     padding: 36px 32px 28px;
     box-shadow: var(--shadow-2);
-    transform: translateY(20px);
+    transform: scale(0.95) translateY(0);
     opacity: 0;
-    transition: transform 0.5s var(--ease), opacity 0.35s var(--ease);
+    transition: transform 0.4s var(--ease), opacity 0.35s var(--ease);
     position: relative;
-    max-height: 90vh;
+    max-height: 88vh;
     overflow-y: auto;
 }
-.modal-overlay.open .modal-box { transform: translateY(0); opacity: 1; }
+.modal-overlay.open .modal-box { transform: scale(1) translateY(0); opacity: 1; }
 .modal-close {
     position: absolute;
     top: 16px; right: 16px;
@@ -610,14 +623,14 @@ tbody tr td:nth-child(4) {
     width: 100%;
     padding: 40px 32px 32px;
     box-shadow: var(--shadow-2);
-    transform: translateY(24px);
+    transform: scale(0.95);
     opacity: 0;
-    transition: transform 0.5s var(--ease), opacity 0.35s var(--ease);
+    transition: transform 0.4s var(--ease), opacity 0.35s var(--ease);
     position: relative;
-    max-height: 90vh;
+    max-height: 88vh;
     overflow-y: auto;
 }
-.profile-modal-overlay.open .profile-modal-box { transform: translateY(0); opacity: 1; }
+.profile-modal-overlay.open .profile-modal-box { transform: scale(1); opacity: 1; }
 .profile-modal-close {
     position: absolute;
     top: 16px; right: 16px;
@@ -733,25 +746,26 @@ tbody tr td:nth-child(4) {
    ============================================================ */
 @media (max-width: 640px) {
     body {
+        height: auto;
+        min-height: 100vh;
         overflow-x: hidden;
-        height: 100dvh;
-        height: 100vh;
+        overflow-y: auto;
     }
 
     .container {
         padding: 0 20px;
-        height: 100dvh;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        padding-bottom: calc(72px + env(safe-area-inset-bottom));
+        padding-bottom: calc(96px + env(safe-area-inset-bottom));
+        height: auto;
+        min-height: 100vh;
+        display: block;
+        overflow: visible;
     }
 
+    /* Header */
     .header {
         padding: 14px 0 12px;
         margin-bottom: 0;
-        border-bottom: none;
+        border-bottom: 1px solid var(--rule);
         flex-shrink: 0;
     }
     .header::after { display: none; }
@@ -760,18 +774,22 @@ tbody tr td:nth-child(4) {
     .header .nama-guru { display: none; }
     .profile-avatar { width: 34px; height: 34px; }
 
+    .header-title-row { gap: 8px; }
+    .header-english {
+        font-size: 10px;
+        letter-spacing: 0.18em;
+    }
+
     #dashboard {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
+        display: block;
+        overflow: visible;
+        padding-top: 8px;
     }
 
     /* Sapaan mobile */
     .mobile-greeting {
         display: block;
-        padding: 12px 0 20px;
-        flex-shrink: 0;
+        padding: 20px 0 24px;
     }
     .mobile-greeting-line-1 {
         font-family: 'Geist Mono', monospace;
@@ -796,31 +814,29 @@ tbody tr td:nth-child(4) {
         grid-template-columns: 1fr;
         border-top: 2px solid var(--ink);
         border-bottom: 1px solid var(--rule);
-        padding: 20px 0 16px;
+        padding: 24px 0 20px;
         margin-bottom: 0;
-        flex-shrink: 0;
     }
     .stat-card.blue {
-        padding: 0 0 14px;
+        padding: 0 0 16px;
         border-right: none;
         border-bottom: 1px dashed var(--rule);
     }
     .stat-card.blue .stat-label {
         font-size: 9.5px;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
         padding-bottom: 8px;
     }
     .stat-card.blue .stat-label::after { width: 18px; }
-    .stat-card.blue .stat-number { font-size: 44px; }
+    .stat-card.blue .stat-number { font-size: 48px; }
 
     .stat-card.purple,
     .stat-card.green,
     .stat-card.red {
-        padding: 8px 0;
-        border-bottom: 1px dashed var(--rule);
+        padding: 12px 0;
         gap: 8px;
     }
-    .stat-card.red { border-bottom: none; padding-bottom: 0; }
+    .stat-card.red { padding-bottom: 0; }
     .stat-card.purple .stat-label,
     .stat-card.green .stat-label,
     .stat-card.red .stat-label { font-size: 12px; }
@@ -828,7 +844,7 @@ tbody tr td:nth-child(4) {
     .stat-card.green .stat-number,
     .stat-card.red .stat-number { font-size: 22px; }
 
-    /* Akses cepat */
+    /* Akses cepat mobile */
     .mobile-quick-access {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -836,9 +852,7 @@ tbody tr td:nth-child(4) {
         background: var(--rule);
         border-top: 1px solid var(--rule);
         border-bottom: 1px solid var(--rule);
-        margin-top: auto;
-        margin-bottom: auto;
-        flex-shrink: 0;
+        margin-top: 24px;
     }
     .mobile-qa-label {
         grid-column: 1 / -1;
@@ -880,113 +894,161 @@ tbody tr td:nth-child(4) {
 
     /* Hide desktop tab */
     .nav-tabs { display: none; }
-    #contentArea { display: none; }
 
-    /* Footer mini */
-    .footer-credit {
-        margin-top: 0;
-        padding-top: 12px;
-        border-top: none;
-        font-size: 8.5px;
-        letter-spacing: 0.22em;
-        flex-shrink: 0;
-    }
+    /* Tampilkan content — di HP konten selalu terlihat */
+    #contentArea { display: block; }
 
-    /* STATE: view = tab */
-    body[data-view="tab"] .container {
-        overflow-y: auto;
-        padding-bottom: calc(72px + env(safe-area-inset-bottom));
-    }
-    body[data-view="tab"] #dashboard {
-        overflow: visible;
-    }
+    /* State: home vs tab */
+    body[data-view="home"] #contentArea { display: none; }
     body[data-view="tab"] .mobile-greeting,
     body[data-view="tab"] .stats-grid,
-    body[data-view="tab"] .mobile-quick-access,
-    body[data-view="tab"] .footer-credit { display: none; }
-    body[data-view="tab"] #contentArea {
-        display: block;
-        padding-top: 8px;
-    }
+    body[data-view="tab"] .mobile-quick-access { display: none; }
 
     /* Filter mobile */
     .filter-section {
         gap: 12px;
         margin-bottom: 20px;
         padding-bottom: 16px;
+        padding-top: 16px;
     }
     .filter-section label { font-size: 9.5px; }
     .filter-select {
         font-size: 13px;
         padding: 6px 28px 6px 0;
-        min-width: 140px;
+        min-width: 120px;
+        max-width: 180px;
     }
     .btn-reset { font-size: 12px; }
 
-    /* Tabel mobile */
+    /* ============================================================
+       TABLE MOBILE — 2 baris per entri, layout FIX
+       ============================================================ */
     thead { display: none; }
-    table { font-size: 13px; min-width: 100%; }
+
+    table { font-size: 13px; min-width: 0; width: 100%; }
+
     tbody tr {
         display: grid;
-        grid-template-columns: 1fr auto;
-        grid-template-areas: "date arrow" "detail arrow";
+        grid-template-columns: 1fr 24px;
+        grid-template-areas:
+            "date    arrow"
+            "detail  arrow";
         padding: 16px 0;
         border-bottom: 1px solid var(--rule);
-        gap: 6px 12px;
+        gap: 4px 12px;
         align-items: center;
     }
     tbody tr:last-child { border-bottom: none; }
-    tbody tr td { padding: 0; border: none; }
-    tbody tr td:first-child { grid-area: date; font-size: 13px; }
-    tbody tr td:nth-child(2),
-    tbody tr td:nth-child(3),
-    tbody tr td:nth-child(4) {
+
+    tbody tr td {
+        padding: 0;
+        border: none;
+        font-size: 13px;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Kolom 1: Tanggal */
+    tbody tr td:nth-child(1) {
+        grid-area: date;
+        font-family: 'Geist Mono', monospace;
+        font-weight: 600;
+        font-size: 13.5px;
+        color: var(--ink);
+        letter-spacing: -0.01em;
+    }
+
+    /* Kolom 2: Hari — uppercase kecil */
+    tbody tr td:nth-child(2) {
         grid-area: detail;
         display: inline;
-        font-size: 11px;
-        letter-spacing: 0.12em;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
         color: var(--ink-3);
     }
-    tbody tr td:nth-child(2)::after,
-    tbody tr td:nth-child(3)::after {
+    tbody tr td:nth-child(2)::after {
         content: ' · ';
         color: var(--ink-4);
         margin: 0 2px;
+        letter-spacing: 0;
     }
-    tbody tr td:nth-child(3),
-    tbody tr td:nth-child(4) { margin-left: 6px; letter-spacing: 0.04em; }
-    tbody tr td:nth-child(4) { color: var(--ink-2); }
-    tbody tr td.arrow-cell,
-    tbody tr td:last-child {
+
+    /* Kolom 3: Kelas */
+    tbody tr td:nth-child(3) {
+        grid-area: detail;
+        display: inline;
+        font-size: 11px;
+    }
+
+    /* Kolom 4: Jam */
+    tbody tr td:nth-child(4) {
+        grid-area: detail;
+        display: inline;
+        font-family: 'Geist Mono', monospace;
+        font-size: 11px;
+        color: var(--ink-2);
+        letter-spacing: 0;
+        margin-left: 6px;
+    }
+
+    /* Kolom 5: Arrow */
+    tbody tr td:nth-child(5),
+    tbody tr td.arrow-cell {
         grid-area: arrow;
         text-align: right;
         color: var(--ink-4);
+        align-self: center;
     }
-    .tag { font-size: 10.5px; padding: 2px 8px; }
 
-    /* Modal bottom sheet */
-    .modal-overlay { align-items: flex-end; padding: 0; }
+    .tag {
+        font-size: 10px;
+        padding: 2px 7px;
+        letter-spacing: 0.04em;
+    }
+
+    /* ============================================================
+       MODAL MOBILE — CENTER SCREEN
+       ============================================================ */
+    .modal-overlay {
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
     .modal-box {
         max-width: 100%;
-        border-radius: 16px 16px 0 0;
-        padding: 28px 20px calc(32px + env(safe-area-inset-bottom));
-        transform: translateY(100%);
-        max-height: 88vh;
+        width: 100%;
+        border-radius: var(--r-md);
+        padding: 28px 22px 24px;
+        transform: scale(0.95);
+        max-height: 85vh;
     }
-    .modal-overlay.open .modal-box { transform: translateY(0); }
-    .modal-title { font-size: 16px; }
+    .modal-overlay.open .modal-box {
+        transform: scale(1);
+    }
+    .modal-title { font-size: 16px; margin-bottom: 20px; }
+    .modal-item { padding: 12px 0; }
     .modal-item .modal-label { font-size: 9.5px; }
     .modal-item .modal-value { font-size: 14px; }
 
-    .profile-modal-overlay { align-items: flex-end; padding: 0; }
+    /* Profile modal center juga */
+    .profile-modal-overlay {
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
     .profile-modal-box {
         max-width: 100%;
-        border-radius: 16px 16px 0 0;
-        padding: 32px 24px calc(36px + env(safe-area-inset-bottom));
-        transform: translateY(100%);
-        max-height: 88vh;
+        border-radius: var(--r-md);
+        padding: 32px 24px 28px;
+        transform: scale(0.95);
+        max-height: 85vh;
     }
-    .profile-modal-overlay.open .profile-modal-box { transform: translateY(0); }
+    .profile-modal-overlay.open .profile-modal-box {
+        transform: scale(1);
+    }
 
     /* Rekap mobile */
     .card-grid-salary { grid-template-columns: 1fr; }
@@ -995,7 +1057,17 @@ tbody tr td:nth-child(4) {
     .salary-entry-card::before { top: 28px; right: 0; }
     .salary-entry-title { font-size: 20px; }
 
-    /* BOTTOM NAV — 5 item */
+    /* Footer */
+    .footer-credit {
+        margin-top: 48px;
+        padding-top: 24px;
+        font-size: 9px;
+        letter-spacing: 0.22em;
+    }
+
+    /* ============================================================
+       BOTTOM NAV — 5 item
+       ============================================================ */
     .mobile-nav {
         display: flex;
         justify-content: space-around;
@@ -1058,10 +1130,10 @@ tbody tr td:nth-child(4) {
 }
 
 @media (max-width: 420px) {
-    .container { padding: 0 16px; }
+    .container { padding: 0 16px; padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
     .header { padding: 12px 0 10px; }
     .mobile-greeting-line-2 { font-size: 18px; }
-    .stat-card.blue .stat-number { font-size: 38px; }
+    .stat-card.blue .stat-number { font-size: 40px; }
     .stat-card.purple .stat-number,
     .stat-card.green .stat-number,
     .stat-card.red .stat-number { font-size: 20px; }
@@ -1069,6 +1141,13 @@ tbody tr td:nth-child(4) {
     .mobile-nav-btn i,
     .mobile-nav-btn svg { width: 16px; height: 16px; }
     .mobile-qa-title { font-size: 14px; }
+
+    /* Tabel lebih compact */
+    tbody tr { padding: 14px 0; }
+    tbody tr td:nth-child(1) { font-size: 13px; }
+    tbody tr td:nth-child(2) { font-size: 9.5px; }
+    tbody tr td:nth-child(3),
+    tbody tr td:nth-child(4) { font-size: 10px; }
 }
 
 @media (min-width: 1024px) {
