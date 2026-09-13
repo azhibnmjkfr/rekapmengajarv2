@@ -29,8 +29,7 @@
         function frame(now) {
             const t = Math.min((now - start) / duration, 1);
             const eased = 1 - Math.pow(1 - t, 3);
-            const value = Math.round(target * eased);
-            el.textContent = value;
+            el.textContent = Math.round(target * eased);
             if (t < 1) requestAnimationFrame(frame);
             else el.textContent = target;
         }
@@ -99,18 +98,32 @@
         obs.observe(tbody, { childList: true });
     });
 
-    /* 5. BOTTOM NAV */
+    /* 5. BOTTOM NAV — 5 item */
     const mobileNav = document.getElementById('mobileNav');
     const mobileNavBtns = mobileNav ? mobileNav.querySelectorAll('.mobile-nav-btn') : [];
 
+    function activateNav(navKey) {
+        mobileNavBtns.forEach(b => b.classList.toggle('active', b.dataset.nav === navKey));
+    }
+
     mobileNavBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            const tab = btn.dataset.tab;
-            const desktopBtn = document.querySelector(`.nav-tabs button[data-tab="${tab}"]`);
+            const nav = btn.dataset.nav;
+
+            if (nav === 'home') {
+                // Kembali ke beranda
+                setView('home');
+                activateNav('home');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+
+            // Tab biasa — trigger switchTab di script.js
+            const desktopBtn = document.querySelector(`.nav-tabs button[data-tab="${nav}"]`);
             if (desktopBtn) desktopBtn.click();
 
-            mobileNavBtns.forEach(b => b.classList.toggle('active', b === btn));
             setView('tab');
+            activateNav(nav);
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     });
